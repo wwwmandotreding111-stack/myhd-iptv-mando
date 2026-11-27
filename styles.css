@@ -30,3 +30,6 @@
 .home-return{margin-top:12px}
 .line-subtotal{color:var(--gold2);white-space:nowrap;font-size:13px}
 @media(max-width:480px){.floating-cart{bottom:10px;padding:10px 12px}.floating-cart .btn{padding:10px 13px;font-size:12px}.floating-cart small{font-size:10px}}
+
+.add-to-cart-btn{width:100%;margin-top:10px;padding:10px 14px;border:1px solid #b99448;border-radius:9px;background:linear-gradient(135deg,#b99448,#806027);color:#100e09;font:800 14px Cairo,sans-serif;cursor:pointer}
+.add-to-cart-btn:active{transform:scale(.98)}

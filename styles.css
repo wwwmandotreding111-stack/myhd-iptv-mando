@@ -249,3 +249,8 @@ footer{border-color:#dce7f4;color:#73839a;background:#fff}footer b{color:#0875d1
 .wa-choice-arrow{margin-right:auto;color:#0875d1;font-size:19px}
 .wa-choice-foot{display:block;margin-top:15px;color:#7b8da1;font-size:11px;line-height:1.7}
 @media(max-width:480px){.wa-choice-panel{padding:28px 18px 20px}.wa-choice-panel h2{font-size:21px}}
+
+/* MYHD conversion and support sections */
+.hero-secondary{margin-top:12px}.btn-trial{border:1px solid #6c9d75;background:linear-gradient(135deg,#1c4930,#12291d);color:#d4f4dc}.btn-wholesale{display:inline-flex;align-items:center;gap:8px}.plan-whatsapp-btn{width:100%;margin-top:9px;padding:10px 14px;border:1px solid #426d50;border-radius:9px;background:linear-gradient(135deg,#1c5736,#123522);color:#e0f6e6;font:800 14px Cairo,sans-serif;cursor:pointer}.plan-whatsapp-btn:active{transform:scale(.98)}
+.help-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.help-card{padding:22px;border:1px solid #403a2b;border-radius:13px;background:linear-gradient(150deg,#191919,#101010)}.help-card>b{color:var(--gold2);font-size:17px}.help-card ol{padding-right:20px;color:#c5bdaf;font-size:13px;line-height:2}.faq-list{display:grid;gap:10px}.faq-list details{padding:16px 18px;border:1px solid #3e3524;border-radius:10px;background:#141414}.faq-list summary{cursor:pointer;color:var(--gold2);font-weight:800}.faq-list p{color:#c3bcaf;font-size:13px;line-height:2;margin-bottom:0}
+@media(max-width:760px){.help-grid{grid-template-columns:1fr}.hero-secondary{margin-top:10px}.hero-secondary .btn{width:100%;justify-content:center}}

@@ -163,3 +163,34 @@ footer{border-color:#dce7f4;color:#73839a;background:#fff}footer b{color:#0875d1
 .auth-page{background:radial-gradient(circle at 50% 10%,#a8d9ff66,transparent 40%),#f3f8ff}.auth-card,.selected-plan-card,.coupon-box{background:#fff;border-color:#d5e5f5;box-shadow:0 16px 45px #174a7b13}input,textarea{background:#f7faff;border-color:#cbdced;color:#173451}input:focus,textarea:focus{border-color:#1688df;box-shadow:0 0 0 3px #1688df19}label{color:#526985}
 .selected-plan-card{background:#f0f7ff}.selected-plan-card small{color:#0875d1}.cart-line{border-color:#e1eaf4}.cart-product small{color:#6a7d94}.cart-product small strong{color:#0759b8}.cart-quantity button{background:#e9f4ff;border-color:#b9d8f2;color:#0759b8}.cart-quantity .cart-remove,.cart-clear-btn{background:#fff2f2;border-color:#efcaca;color:#b53d48}.cart-warning{background:#fff9e8;border-color:#f0d78c;color:#7b5b12}.cart-empty b{color:#183b67}.cart-empty small{color:#6a7d94}.coupon-box{background:#f4f9ff}.coupon-totals{border-color:#e0eaf5;color:#526985}.coupon-totals b{color:#0759b8}.success-card{border-color:#b8e1c9}.success-icon{background:#e7f8ed;border-color:#8dd0a7;color:#22834a}
 @media(max-width:760px){.topbar{background:#fff}.hero{padding-top:38px}.hero-art{background:radial-gradient(circle,#fff,#dcefff)}.plan-image{height:170px}}
+
+
+/* Integrated premium MYHD package cards */
+.plan-card{display:flex;flex-direction:column;min-height:0;overflow:hidden;border-radius:20px}
+.plan-art{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(135deg,#073d83,#1389df 55%,#082c66);line-height:0}
+.plan-art .plan-image{display:block;width:100%;height:clamp(150px,24vw,205px);object-fit:cover;object-position:center;margin:0}
+.plan-art:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 55%,#062a58a8)}
+.plan-art-label{position:absolute;z-index:2;right:14px;bottom:12px;padding:5px 13px;border:1px solid #ffe69a;border-radius:999px;background:linear-gradient(135deg,#fff0a4,#dca82c);color:#12345d;font:900 12px Cairo,sans-serif;box-shadow:0 4px 15px #001b3c55}
+.plan-content{display:flex;flex:1;flex-direction:column;gap:7px;padding:18px 19px 20px;min-height:0}
+.plan-content .eyebrow{font-size:11px;font-weight:900}
+.plan-content h3{margin:0;font-size:clamp(18px,2vw,22px);line-height:1.5}
+.plan-content p{min-height:0;margin:0;color:#61758e;font-size:12px;line-height:1.8}
+.plan-content .duration{display:inline-flex;align-self:flex-start;align-items:center;padding:5px 11px;border:1px solid #c6def4;border-radius:999px;background:#f0f7ff;color:#0759b8;font-size:12px;font-weight:800}
+.plan-features{display:flex;flex-wrap:wrap;gap:7px;margin:3px 0 0;padding:0;list-style:none}
+.plan-features li{padding:4px 9px;border:1px solid #d7e7f6;border-radius:8px;background:#f5f9fe;color:#46617f;font-size:11px}
+.plan-content .price{margin:5px 0 2px;align-items:center}
+.plan-content .price strong{font-size:27px;font-weight:900;color:#0759b8}
+.plan-content .quantity-picker{margin-top:auto;padding:11px;gap:9px;display:grid;grid-template-columns:auto 76px minmax(112px,1fr);align-items:center}
+.plan-content .quantity-picker label{margin:0;font-size:11px;line-height:1.6}
+.plan-content .quantity-input{width:100%;height:43px}
+.plan-content .add-to-cart-btn{margin:0;min-height:43px;padding:8px 10px;font-size:13px;border-radius:10px}
+.plan-card-vip{border-color:#8eb9e2;box-shadow:0 12px 32px #0759b812}
+.plan-card-vip .plan-art{background:linear-gradient(135deg,#061b4d,#087bd7 55%,#062354)}
+@media(max-width:620px){
+ .plans-grid{grid-template-columns:1fr;gap:18px}
+ .plan-art .plan-image{height:190px}
+ .plan-content{padding:16px}
+ .plan-content .quantity-picker{grid-template-columns:1fr 76px 1.2fr}
+ .plan-content .quantity-picker label{font-size:11px}
+ .plan-content .add-to-cart-btn{font-size:12px}
+}

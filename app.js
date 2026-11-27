@@ -64,7 +64,7 @@
    if(offer){finalPrice=offer.discount_type==="percent"?finalPrice*(1-Number(offer.discount_value)/100):finalPrice-Number(offer.discount_value);finalPrice=Math.max(0,finalPrice);}
 
    const isTrial=Number(p.price||0)===0&&Number(p.duration_hours)===24;
-   const cleanPlanName=(p.name||"MY HD").replace(/\\s*[-–—|:]?\\s*\\d+\\s*(?:شهرًا|شهراً|أشهر|شهرين|شهر|months?|mos?)\\s*$/i,"").trim();
+   const cleanPlanName=(p.name||"MY HD").replace(/\s*[-–—|:]?\s*\d+\s*(?:شهرًا|شهراً|أشهر|شهرين|شهر|months?|mos?)\s*$/i,"").trim();
    const planDuration=duration(p);
    const title=cleanPlanName+(planDuration?" - "+planDuration:"");
    return `<article class="plan-card ${vip?"plan-card-vip":""}"><div class="plan-art">${image}<span class="plan-art-label">${vip?"✦ VIP مميز":"▣ اشتراك أساسي"}</span></div><div class="plan-content"><h3>${esc(title)}</h3>${p.description?`<p>${esc(p.description)}</p>`:""}${features?`<ul class="plan-features">${features}</ul>`:""}${offer?`<div class="price"><span class="offer-tag">عرض خاص</span><del>${esc(p.price)} ${esc(p.currency||"")}</del><strong>${finalPrice.toFixed(2).replace(/\.00$/,"")} ${esc(p.currency||"")}</strong></div><small class="offer-description">${esc(offer.title)}</small>`:`<div class="price"><strong>${esc(p.price)} ${esc(p.currency||"")}</strong></div>`}<div class="quantity-picker"><label for="qty-${esc(p.id)}">عدد الأكواد</label><input class="quantity-input" id="qty-${esc(p.id)}" data-plan-id="${esc(p.id)}" type="number" min="0" step="1" inputmode="numeric" value="1" aria-label="عدد الأكواد من ${esc(title)}"><button type="button" class="add-to-cart-btn" data-plan-id="${esc(p.id)}">أضف للسلة</button><button type="button" class="plan-whatsapp-btn" data-whatsapp-plan="${esc(p.id)}">${isTrial?"اطلب تجربة مجانية 24 ساعة":"اطلب الآن عبر واتساب"}</button></div></div></article>`;
@@ -78,7 +78,7 @@
    const offer=offerByPlan.get(id);let amount=Number(plan?.price||0);
    if(offer){amount=offer.discount_type==="percent"?amount*(1-Number(offer.discount_value)/100):amount-Number(offer.discount_value);amount=Math.max(0,amount);}
    const priceText=(Number.isInteger(amount)?String(amount):amount.toFixed(2))+" "+(plan?.currency||"");
-   const cleanPlanName=(plan?.name||"MYHD IPTV").replace(/\\s*[-–—|:]?\\s*\\d+\\s*(?:شهرًا|شهراً|أشهر|شهرين|شهر|months?|mos?)\\s*$/i,"").trim();
+   const cleanPlanName=(plan?.name||"MYHD IPTV").replace(/\s*[-–—|:]?\s*\d+\s*(?:شهرًا|شهراً|أشهر|شهرين|شهر|months?|mos?)\s*$/i,"").trim();
    const planTitle=cleanPlanName+(duration(plan)?" - "+duration(plan):"");
    const message=trial
     ?"السلام عليكم، أرغب في طلب تجربة مجانية لمدة 24 ساعة لخدمة "+(plan?.name||"MY HD")+"."

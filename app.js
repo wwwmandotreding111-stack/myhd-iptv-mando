@@ -42,7 +42,7 @@
   if(planAdEl){planAdEl.innerHTML=planAds.map(a=>'<a class="store-ad" href="'+esc(a.link_url&&/^https?:\/\//i.test(a.link_url)?a.link_url:"#plans")+'"><img src="'+esc(a.image_path)+'" alt="'+esc(a.title||"إعلان")+'"><span><b>'+esc(a.title||"إعلان")+'</b><small>'+esc(a.description||"")+'</small></span></a>').join("");planAdEl.hidden=!planAds.length;}
   renderAdSlot(banners.filter(a=>a.placement==="footer"),"footerAds");
   grid.innerHTML=data.map(p=>{
-   const vip=/vip/i.test((p.name||"")+" "+(p.category||""));const fallbackImage=vip?"/assets/myhd-vip-card.svg":"/assets/myhd-card.svg";const remoteImage=p.image_path&&/^https?:\\/\\//i.test(p.image_path)?p.image_path:fallbackImage;const image='<img class="plan-image" src="'+esc(remoteImage)+'" alt="'+esc(p.name)+'" loading="lazy" onerror="this.onerror=null;this.src=\''+fallbackImage+'\';">';
+   const vip=/vip/i.test((p.name||"")+" "+(p.category||""));const fallbackImage=vip?"/assets/myhd-vip-card.svg":"/assets/myhd-card.svg";const remoteImage=p.image_path&&/^https?:\/\//i.test(p.image_path)?p.image_path:fallbackImage;const image='<img class="plan-image" src="'+esc(remoteImage)+'" alt="'+esc(p.name)+'" loading="lazy" onerror="this.onerror=null;this.src=\''+fallbackImage+'\';">';
    const features=Array.isArray(p.features)?p.features.filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join(""):"";
    const offer=offerByPlan.get(p.id);let finalPrice=Number(p.price||0);
    if(offer){finalPrice=offer.discount_type==="percent"?finalPrice*(1-Number(offer.discount_value)/100):finalPrice-Number(offer.discount_value);finalPrice=Math.max(0,finalPrice);}

@@ -1,1 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600"><defs><linearGradient id="b" x2="1" y2="1"><stop stop-color="#061338"/><stop offset=".55" stop-color="#087bd7"/><stop offset="1" stop-color="#041c50"/></linearGradient><radialGradient id="g"><stop stop-color="#fff"/><stop offset=".35" stop-color="#8bd4ff"/><stop offset="1" stop-color="#1688ff" stop-opacity="0"/></radialGradient><linearGradient id="y" x2="0" y2="1"><stop stop-color="#fff0a2"/><stop offset="1" stop-color="#d59b17"/></linearGradient></defs><rect width="900" height="600" rx="28" fill="url(#b)"/><circle cx="450" cy="160" r="310" fill="url(#g)"/><path d="M0 95Q220 0 450 95T900 95M0 500Q220 410 450 500T900 500" fill="none" stroke="#b8e8ff" stroke-width="5" opacity=".55"/><g transform="translate(450 140)"><circle r="62" fill="#fff"/><g><path d="M0-54C40-70 58-34 30-8C15 4 7 7 0 0Z" fill="#e92748"/><path d="M0-54C40-70 58-34 30-8C15 4 7 7 0 0Z" fill="#f5c32b" transform="rotate(60)"/><path d="M0-54C40-70 58-34 30-8C15 4 7 7 0 0Z" fill="#1ca85c" transform="rotate(120)"/><path d="M0-54C40-70 58-34 30-8C15 4 7 7 0 0Z" fill="#0d9ed7" transform="rotate(180)"/><path d="M0-54C40-70 58-34 30-8C15 4 7 7 0 0Z" fill="#2638b9" transform="rotate(240)"/><path d="M0-54C40-70 58-34 30-8C15 4 7 7 0 0Z" fill="#8b2ba7" transform="rotate(300)"/></g></g><text x="450" y="235" fill="#082653" font-family="Georgia,serif" font-size="58" font-weight="bold" text-anchor="middle">My HD</text><rect x="250" y="260" width="400" height="72" rx="18" fill="url(#y)"/><text x="450" y="309" fill="#09234a" font-family="Arial,sans-serif" font-size="38" font-weight="bold" text-anchor="middle">MY HD VIP</text><g transform="translate(100 385)"><rect width="310" height="135" rx="12" fill="#061b3c" stroke="#e7f6ff" stroke-width="7"/><rect x="12" y="12" width="286" height="108" rx="5" fill="#0c5bb4"/><circle cx="155" cy="66" r="25" fill="#fff"/><path d="M148 50v32l27-16Z" fill="#0759b8"/><path d="M-15 145h340l-32 17H18Z" fill="#d8f1ff"/></g><g transform="translate(520 390)"><rect width="130" height="115" rx="12" fill="#061b3c" stroke="#e7f6ff" stroke-width="6"/><rect x="9" y="9" width="112" height="97" rx="5" fill="#0c5bb4"/></g><g transform="translate(690 410)"><rect width="65" height="115" rx="12" fill="#061b3c" stroke="#e7f6ff" stroke-width="5"/><rect x="6" y="9" width="53" height="94" rx="5" fill="#0c5bb4"/></g><text x="790" y="390" fill="#fff" font-family="Arial" font-size="25" font-weight="bold" text-anchor="middle">VIP</text><text x="790" y="425" fill="#fff" font-family="Arial" font-size="17" text-anchor="middle">MOVIES · SPORTS</text><rect y="555" width="900" height="45" fill="#041331" opacity=".8"/><text x="450" y="585" fill="#fff" font-family="Arial" font-size="22" text-anchor="middle">عالم الترفيه بين يديك · مشاهدة بلا حدود</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+<defs>
+ <linearGradient id="bg2" x2="1" y2="1"><stop stop-color="#050505"/><stop offset=".5" stop-color="#30230d"/><stop offset="1" stop-color="#050505"/></linearGradient>
+ <radialGradient id="glow2"><stop stop-color="#f8d77b" stop-opacity=".8"/><stop offset="1" stop-color="#d49a27" stop-opacity="0"/></radialGradient>
+ <linearGradient id="gold2" x2="0" y2="1"><stop stop-color="#fff4bd"/><stop offset=".5" stop-color="#e8bd59"/><stop offset="1" stop-color="#986514"/></linearGradient>
+ <linearGradient id="skin2" x2="0" y2="1"><stop stop-color="#ffdfc1"/><stop offset="1" stop-color="#b87852"/></linearGradient>
+ <linearGradient id="armor" x2="0" y2="1"><stop stop-color="#fff0b0"/><stop offset="1" stop-color="#a56d19"/></linearGradient>
+</defs>
+<rect width="900" height="600" rx="28" fill="url(#bg2)"/>
+<circle cx="450" cy="180" r="350" fill="url(#glow2)"/>
+<path d="M0 365Q220 265 450 365T900 365V600H0Z" fill="#100d07" opacity=".9"/>
+<path d="M450 20L470 62L516 69L483 102L491 148L450 126L409 148L417 102L384 69L430 62Z" fill="url(#gold2)"/>
+<text x="450" y="195" fill="url(#gold2)" font-family="Georgia,serif" font-size="78" font-weight="bold" text-anchor="middle">MY HD VIP</text>
+<text x="450" y="235" fill="#fff0bd" font-family="Arial,sans-serif" font-size="21" text-anchor="middle" letter-spacing="4">THE ULTIMATE EXPERIENCE</text>
+<!-- gold football star -->
+<g transform="translate(180 270)">
+ <ellipse cy="220" rx="78" ry="13" fill="#000" opacity=".65"/>
+ <path d="M-30 113L-43 190L-28 225H-2L10 166L28 225H55L43 188L30 113Z" fill="#17130b"/>
+ <path d="M-34 70L-58 95L-42 151L-14 136L0 151L18 136L43 151L58 95L32 70Z" fill="url(#gold2)" stroke="#fff0b5" stroke-width="3"/>
+ <path d="M-54 94L-74 150L-58 162L-34 122M53 94L74 150L58 162L34 122" fill="url(#skin2)" stroke="#8d593c" stroke-width="3"/>
+ <circle cy="39" r="34" fill="url(#skin2)"/>
+ <path d="M-34 33Q-24 -7 12 4Q34 14 34 34L18 23L0 27L-20 20Z" fill="#17130b"/>
+ <path d="M-13 43h6M9 43h6" stroke="#342619" stroke-width="4" stroke-linecap="round"/>
+ <path d="M-7 57Q0 64 8 57" fill="none" stroke="#874d3c" stroke-width="3"/>
+ <path d="M-3 85L0 101L3 85" fill="#fff0b5"/>
+ <circle cx="82" cy="210" r="22" fill="url(#gold2)" stroke="#fff0b5" stroke-width="2"/>
+</g>
+<!-- original fantasy heroine -->
+<g transform="translate(455 265)">
+ <ellipse cy="225" rx="75" ry="13" fill="#000" opacity=".65"/>
+ <path d="M-28 67Q-72 95 -76 190L-40 214L0 160L40 214L76 190Q72 95 28 67Z" fill="#8d1e36" stroke="url(#gold2)" stroke-width="4"/>
+ <path d="M-30 104L-44 185L-22 224H22L44 185L30 104Z" fill="url(#armor)" stroke="#fff0b5" stroke-width="3"/>
+ <path d="M-44 93L-62 155L-45 166L-27 122M44 93L62 155L45 166L27 122" fill="url(#skin2)" stroke="#8d593c" stroke-width="3"/>
+ <circle cy="37" r="32" fill="url(#skin2)"/>
+ <path d="M-33 34Q-35 -5 0 -4Q35 -5 33 36L20 15L0 9L-20 18Z" fill="#29150d"/>
+ <path d="M-31 32Q-55 90 -33 124L-18 102L-24 53M31 32Q55 90 33 124L18 102L24 53" fill="#29150d"/>
+ <path d="M-12 42h5M8 42h5" stroke="#382619" stroke-width="4" stroke-linecap="round"/>
+ <path d="M-6 55Q0 60 7 55" fill="none" stroke="#874d3c" stroke-width="3"/>
+ <path d="M0 -10L8 -28L16 -8" fill="none" stroke="url(#gold2)" stroke-width="6"/>
+</g>
+<!-- original golden robot mascot -->
+<g transform="translate(735 280)">
+ <ellipse cy="210" rx="70" ry="12" fill="#000" opacity=".65"/>
+ <path d="M-45 20L-55 -12L-20 0Q0 -10 20 0L55 -12L45 20Q65 50 53 90Q0 125 -53 90Q-65 50 -45 20Z" fill="url(#armor)" stroke="#fff0b5" stroke-width="5"/>
+ <rect x="-42" y="30" width="84" height="58" rx="22" fill="#17130b"/>
+ <ellipse cx="-16" cy="58" rx="8" ry="12" fill="#7de7ff"/><ellipse cx="16" cy="58" rx="8" ry="12" fill="#7de7ff"/>
+ <path d="M-13 76Q0 84 13 76" fill="none" stroke="#f6d67e" stroke-width="3"/>
+ <path d="M-36 101L-47 177L-23 205L0 161L23 205L47 177L36 101Z" fill="url(#gold2)" stroke="#fff0b5" stroke-width="4"/>
+ <path d="M-37 118L-65 150M37 118L65 150" stroke="url(#armor)" stroke-width="16" stroke-linecap="round"/>
+ <circle cx="0" cy="-4" r="9" fill="#fff0a0"/>
+</g>
+<rect x="65" y="500" width="770" height="58" rx="18" fill="#171006" stroke="url(#gold2)" stroke-width="3"/>
+<text x="450" y="538" fill="url(#gold2)" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle">SPORTS  •  CINEMA  •  CARTOONS  •  MORE</text>
+</svg>

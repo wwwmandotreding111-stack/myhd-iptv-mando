@@ -36,11 +36,12 @@ create table if not exists public.subscription_orders (
   updated_at timestamptz not null default now()
 );
 
+-- Invoker rights: authorization is evaluated under the signed-in user's RLS.
 create or replace function public.is_myhd_admin()
 returns boolean
 language sql
 stable
-security definer
+security invoker
 set search_path = ''
 as $$
   select exists (

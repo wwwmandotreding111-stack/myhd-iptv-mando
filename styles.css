@@ -194,3 +194,28 @@ footer{border-color:#dce7f4;color:#73839a;background:#fff}footer b{color:#0875d1
  .plan-content .quantity-picker label{font-size:11px}
  .plan-content .add-to-cart-btn{font-size:12px}
 }
+
+
+/* Compact, polished package cards — remove stretched empty space */
+#plansGrid.plans-grid{align-items:start;grid-auto-rows:max-content}
+#plansGrid .plan-card{height:auto!important;min-height:0!important;align-self:start;display:flex;flex-direction:column}
+#plansGrid .plan-content{height:auto!important;min-height:0!important;flex:0 0 auto!important;justify-content:flex-start!important;gap:9px;padding:18px 20px 20px}
+#plansGrid .plan-content .quantity-picker{margin-top:12px!important}
+#plansGrid .plan-content .duration{margin-top:1px}
+#plansGrid .plan-content .price{margin:8px 0 5px}
+#plansGrid .plan-art .plan-image{height:clamp(170px,30vw,220px);object-fit:cover}
+#plansGrid .plan-card{border:1px solid #c9dff3;box-shadow:0 12px 30px rgba(16,65,112,.10)}
+#plansGrid .plan-card-vip{border-color:#8cbce8;box-shadow:0 12px 32px rgba(7,89,184,.15)}
+#plansGrid .plan-content h3{font-size:clamp(20px,3vw,25px);font-weight:900;color:#173c70}
+#plansGrid .plan-content .price strong{font-size:30px;letter-spacing:-.4px}
+#plansGrid .plan-content .quantity-picker{grid-template-columns:minmax(74px,1fr) 76px minmax(118px,1.25fr);gap:10px;padding:12px;background:linear-gradient(135deg,#f2f8ff,#eaf4ff);border:1px solid #c9def2;border-radius:14px}
+#plansGrid .plan-content .quantity-picker label{font-size:12px;font-weight:800;color:#526985}
+#plansGrid .plan-content .quantity-input{height:48px;border:1.5px solid #a9cce9;border-radius:12px;font-size:20px}
+#plansGrid .plan-content .add-to-cart-btn{min-height:48px;border-radius:12px;font-weight:900;box-shadow:0 6px 14px rgba(7,89,184,.16)}
+@media(max-width:620px){
+ #plansGrid.plans-grid{grid-template-columns:minmax(0,1fr);gap:18px}
+ #plansGrid .plan-content{padding:16px}
+ #plansGrid .plan-art .plan-image{height:190px}
+ #plansGrid .plan-content .quantity-picker{grid-template-columns:minmax(70px,1fr) 72px minmax(112px,1.25fr);gap:8px}
+ #plansGrid .plan-content .add-to-cart-btn{font-size:12px;padding-inline:7px}
+}

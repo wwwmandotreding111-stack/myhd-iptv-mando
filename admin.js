@@ -13,7 +13,7 @@
   const {data:{session}}=await db.auth.getSession();if(!session){showLogin();return;}
   const {data,error}=await db.rpc("is_admin");
   if(error||data!==true){await db.auth.signOut();msg.textContent="هذا الحساب غير مخوّل للإدارة.";showLogin();return;}
-  $("adminLogin").hidden=true;$("dashboard").hidden=false;await loadDashboard();
+  $("adminLogin").hidden=true;$("dashboard").hidden=false;$("adminLogout").hidden=false;await loadDashboard();
  }
  function showLogin(){$("adminLogin").hidden=false;$("dashboard").hidden=true;$("adminLogout").hidden=true;}
  $("adminLoginBtn").onclick=async()=>{msg.textContent="جارٍ التحقق...";const {error}=await db.auth.signInWithPassword({email:$("adminEmail").value.trim(),password:$("adminPassword").value});if(error){msg.textContent="تعذر تسجيل الدخول. تحقق من البريد وكلمة المرور.";return;}await verify();};

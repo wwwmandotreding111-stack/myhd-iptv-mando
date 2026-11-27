@@ -1,54 +1,53 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
 <defs>
- <linearGradient id="bg2" x2="1" y2="1"><stop stop-color="#050505"/><stop offset=".5" stop-color="#30230d"/><stop offset="1" stop-color="#050505"/></linearGradient>
- <radialGradient id="glow2"><stop stop-color="#f8d77b" stop-opacity=".8"/><stop offset="1" stop-color="#d49a27" stop-opacity="0"/></radialGradient>
- <linearGradient id="gold2" x2="0" y2="1"><stop stop-color="#fff4bd"/><stop offset=".5" stop-color="#e8bd59"/><stop offset="1" stop-color="#986514"/></linearGradient>
- <linearGradient id="skin2" x2="0" y2="1"><stop stop-color="#ffdfc1"/><stop offset="1" stop-color="#b87852"/></linearGradient>
- <linearGradient id="armor" x2="0" y2="1"><stop stop-color="#fff0b0"/><stop offset="1" stop-color="#a56d19"/></linearGradient>
+ <linearGradient id="g" x2="1" y2="1"><stop stop-color="#050505"/><stop offset=".5" stop-color="#33240c"/><stop offset="1" stop-color="#050505"/></linearGradient>
+ <radialGradient id="shine"><stop stop-color="#ffe6a0" stop-opacity=".75"/><stop offset="1" stop-color="#d39b2d" stop-opacity="0"/></radialGradient>
+ <linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff4c4"/><stop offset=".5" stop-color="#e9bd59"/><stop offset="1" stop-color="#916017"/></linearGradient>
+ <linearGradient id="field" x2="0" y2="1"><stop stop-color="#277c48"/><stop offset="1" stop-color="#073b25"/></linearGradient>
 </defs>
-<rect width="900" height="600" rx="28" fill="url(#bg2)"/>
-<circle cx="450" cy="180" r="350" fill="url(#glow2)"/>
-<path d="M0 365Q220 265 450 365T900 365V600H0Z" fill="#100d07" opacity=".9"/>
-<path d="M450 20L470 62L516 69L483 102L491 148L450 126L409 148L417 102L384 69L430 62Z" fill="url(#gold2)"/>
-<text x="450" y="195" fill="url(#gold2)" font-family="Georgia,serif" font-size="78" font-weight="bold" text-anchor="middle">MY HD VIP</text>
-<text x="450" y="235" fill="#fff0bd" font-family="Arial,sans-serif" font-size="21" text-anchor="middle" letter-spacing="4">THE ULTIMATE EXPERIENCE</text>
-<!-- gold football star -->
-<g transform="translate(180 270)">
- <ellipse cy="220" rx="78" ry="13" fill="#000" opacity=".65"/>
- <path d="M-30 113L-43 190L-28 225H-2L10 166L28 225H55L43 188L30 113Z" fill="#17130b"/>
- <path d="M-34 70L-58 95L-42 151L-14 136L0 151L18 136L43 151L58 95L32 70Z" fill="url(#gold2)" stroke="#fff0b5" stroke-width="3"/>
- <path d="M-54 94L-74 150L-58 162L-34 122M53 94L74 150L58 162L34 122" fill="url(#skin2)" stroke="#8d593c" stroke-width="3"/>
- <circle cy="39" r="34" fill="url(#skin2)"/>
- <path d="M-34 33Q-24 -7 12 4Q34 14 34 34L18 23L0 27L-20 20Z" fill="#17130b"/>
- <path d="M-13 43h6M9 43h6" stroke="#342619" stroke-width="4" stroke-linecap="round"/>
- <path d="M-7 57Q0 64 8 57" fill="none" stroke="#874d3c" stroke-width="3"/>
- <path d="M-3 85L0 101L3 85" fill="#fff0b5"/>
- <circle cx="82" cy="210" r="22" fill="url(#gold2)" stroke="#fff0b5" stroke-width="2"/>
+<rect width="900" height="600" rx="28" fill="url(#g)"/><circle cx="450" cy="190" r="370" fill="url(#shine)"/>
+<path d="M0 390Q220 280 450 390T900 390V600H0Z" fill="#100c05"/>
+<path d="M450 18L469 57L512 64L481 95L488 139L450 119L412 139L419 95L388 64L431 57Z" fill="url(#gold)"/>
+<text x="450" y="175" fill="url(#gold)" font-family="Georgia" font-size="76" font-weight="bold" text-anchor="middle">MY HD VIP</text>
+<text x="450" y="213" fill="#fff0c0" font-family="Arial" font-size="20" text-anchor="middle" letter-spacing="4">PREMIUM ENTERTAINMENT</text>
+<!-- premium TV with match scene -->
+<g transform="translate(205 230)">
+ <rect width="490" height="235" rx="18" fill="#080705" stroke="url(#gold)" stroke-width="9"/>
+ <rect x="13" y="13" width="464" height="209" rx="9" fill="#102d22"/>
+ <rect x="13" y="13" width="464" height="80" rx="9" fill="#142338"/>
+ <text x="245" y="45" fill="url(#gold)" font-family="Arial" font-size="19" font-weight="bold" text-anchor="middle">LIVE FOOTBALL • VIP</text>
+ <path d="M13 112Q245 55 477 112V222H13Z" fill="url(#field)"/>
+ <path d="M13 160Q245 105 477 160M245 88V222" fill="none" stroke="#fff3d0" stroke-width="3" opacity=".8"/>
+ <g fill="#f8e7b5">
+  <circle cx="145" cy="129" r="15"/><path d="M130 147L116 190L140 196L151 165L165 196L188 190L160 147Z"/>
+  <circle cx="330" cy="126" r="15"/><path d="M315 144L300 188L324 195L336 163L350 195L374 188L345 144Z"/>
+ </g>
+ <path d="M130 150L113 177M159 150L179 177M315 147L300 177M344 147L364 177" stroke="#d9a63c" stroke-width="9" stroke-linecap="round"/>
+ <circle cx="245" cy="190" r="20" fill="#fff" stroke="#211707" stroke-width="3"/>
+ <path d="M245 176L257 184L253 198H237L233 184Z" fill="#211707"/>
+ <path d="M190 235H300L315 249H175Z" fill="url(#gold)"/>
 </g>
-<!-- original fantasy heroine -->
-<g transform="translate(455 265)">
- <ellipse cy="225" rx="75" ry="13" fill="#000" opacity=".65"/>
- <path d="M-28 67Q-72 95 -76 190L-40 214L0 160L40 214L76 190Q72 95 28 67Z" fill="#8d1e36" stroke="url(#gold2)" stroke-width="4"/>
- <path d="M-30 104L-44 185L-22 224H22L44 185L30 104Z" fill="url(#armor)" stroke="#fff0b5" stroke-width="3"/>
- <path d="M-44 93L-62 155L-45 166L-27 122M44 93L62 155L45 166L27 122" fill="url(#skin2)" stroke="#8d593c" stroke-width="3"/>
- <circle cy="37" r="32" fill="url(#skin2)"/>
- <path d="M-33 34Q-35 -5 0 -4Q35 -5 33 36L20 15L0 9L-20 18Z" fill="#29150d"/>
- <path d="M-31 32Q-55 90 -33 124L-18 102L-24 53M31 32Q55 90 33 124L18 102L24 53" fill="#29150d"/>
- <path d="M-12 42h5M8 42h5" stroke="#382619" stroke-width="4" stroke-linecap="round"/>
- <path d="M-6 55Q0 60 7 55" fill="none" stroke="#874d3c" stroke-width="3"/>
- <path d="M0 -10L8 -28L16 -8" fill="none" stroke="url(#gold2)" stroke-width="6"/>
+<!-- family cartoon characters -->
+<g transform="translate(70 280)">
+ <circle cx="42" cy="34" r="24" fill="#efbd91"/><path d="M18 31Q22 1 48 9Q68 15 67 36L54 24L34 26Z" fill="#24170d"/>
+ <path d="M17 66Q42 49 68 66L78 142H7Z" fill="url(#gold)" stroke="#fff0bd" stroke-width="3"/>
+ <circle cx="103" cy="47" r="20" fill="#d99e76"/><path d="M83 44Q85 17 109 25L124 42L111 36L97 38Z" fill="#17110b"/>
+ <path d="M82 75Q103 60 125 75L134 140H74Z" fill="#8b3150" stroke="#f5d99a" stroke-width="3"/>
+ <circle cx="35" cy="35" r="3" fill="#17110b"/><circle cx="49" cy="35" r="3" fill="#17110b"/>
+ <circle cx="97" cy="47" r="3" fill="#17110b"/><circle cx="110" cy="47" r="3" fill="#17110b"/>
+ <path d="M35 49Q42 55 50 49M97 59Q103 65 110 59" fill="none" stroke="#874d3c" stroke-width="3"/>
 </g>
-<!-- original golden robot mascot -->
-<g transform="translate(735 280)">
- <ellipse cy="210" rx="70" ry="12" fill="#000" opacity=".65"/>
- <path d="M-45 20L-55 -12L-20 0Q0 -10 20 0L55 -12L45 20Q65 50 53 90Q0 125 -53 90Q-65 50 -45 20Z" fill="url(#armor)" stroke="#fff0b5" stroke-width="5"/>
- <rect x="-42" y="30" width="84" height="58" rx="22" fill="#17130b"/>
- <ellipse cx="-16" cy="58" rx="8" ry="12" fill="#7de7ff"/><ellipse cx="16" cy="58" rx="8" ry="12" fill="#7de7ff"/>
- <path d="M-13 76Q0 84 13 76" fill="none" stroke="#f6d67e" stroke-width="3"/>
- <path d="M-36 101L-47 177L-23 205L0 161L23 205L47 177L36 101Z" fill="url(#gold2)" stroke="#fff0b5" stroke-width="4"/>
- <path d="M-37 118L-65 150M37 118L65 150" stroke="url(#armor)" stroke-width="16" stroke-linecap="round"/>
- <circle cx="0" cy="-4" r="9" fill="#fff0a0"/>
+<!-- cinema clapper and film strip -->
+<g transform="translate(735 285)">
+ <rect x="0" y="20" width="112" height="78" rx="9" fill="#171006" stroke="url(#gold)" stroke-width="4"/>
+ <path d="M0 20L18 0H130L112 20Z" fill="url(#gold)" stroke="#fff0bd" stroke-width="3"/>
+ <path d="M24 2L38 19M61 2L75 19M98 2L112 19" stroke="#241706" stroke-width="7"/>
+ <path d="M40 42V79L75 60Z" fill="#fff0bd"/>
+ <rect x="7" y="114" width="98" height="53" rx="7" fill="#8a2538" stroke="url(#gold)" stroke-width="3"/>
+ <path d="M20 114V167M91 114V167" stroke="#f5dca2" stroke-width="4"/>
+ <text x="56" y="147" fill="#fff2c5" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">MOVIES</text>
 </g>
-<rect x="65" y="500" width="770" height="58" rx="18" fill="#171006" stroke="url(#gold2)" stroke-width="3"/>
-<text x="450" y="538" fill="url(#gold2)" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle">SPORTS  •  CINEMA  •  CARTOONS  •  MORE</text>
+<rect x="60" y="500" width="780" height="62" rx="17" fill="#171006" stroke="url(#gold)" stroke-width="3"/>
+<text x="450" y="526" fill="url(#gold)" font-family="Arial" font-size="21" font-weight="bold" text-anchor="middle">SPORTS • MATCHES • KIDS • MOVIES • SERIES</text>
+<text x="450" y="548" fill="#fff0c0" font-family="Arial" font-size="15" text-anchor="middle">THE BEST OF ENTERTAINMENT FOR THE WHOLE FAMILY</text>
 </svg>

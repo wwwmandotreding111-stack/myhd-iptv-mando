@@ -29,7 +29,7 @@
   const id=btn.dataset.planId,action=btn.dataset.cartAction,idx=cart.findIndex(p=>p.id===id);
   if(idx<0)return;
   if(action==="plus"){const count=cart.filter(p=>p.id===id).length;if(count<99)cart.push(cart[idx]);else return;}
-  if(action==="minus"){cart.splice(idx,1);if(!cart.some(p=>p.id===id))appliedCoupon=null;}
+  if(action==="minus"){cart.splice(idx,1);if(appliedCoupon?.subscription_id===id&&!cart.some(p=>p.id===id))appliedCoupon=null;}
   if(action==="remove"){cart=cart.filter(p=>p.id!==id);if(appliedCoupon?.subscription_id===id)appliedCoupon=null;}
   saveCart(cart.map(p=>p.id));renderCart();
  });

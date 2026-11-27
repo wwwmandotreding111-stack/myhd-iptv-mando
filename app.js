@@ -11,7 +11,7 @@
   const items=readCart(),count=items.length,el=document.getElementById("cartCount"),bar=document.getElementById("floatingCart"),qty=document.getElementById("floatingCartCount"),sum=document.getElementById("floatingCartHint");
   if(el)el.textContent=count;if(qty)qty.textContent=count;
   if(bar){bar.hidden=!count;if(sum)sum.textContent=count?("تم اختيار "+count+" كود"+(count===1?"":"")+". اضغط لإكمال الطلب"):"";}
-  grid?.querySelectorAll(".quantity-value").forEach(x=>{x.textContent=counts()[x.dataset.planId]||0});
+  grid?.querySelectorAll(".quantity-input").forEach(x=>{x.value=counts()[x.dataset.planId]||0});
  }
  updateCart();
  if(!cfg.SUPABASE_URL||!cfg.SUPABASE_PUBLISHABLE_KEY){grid.innerHTML='<div class="empty-state">تعذر الاتصال بقاعدة البيانات.</div>';return;}
@@ -25,12 +25,14 @@
   grid.innerHTML=data.map(p=>{
    const image=p.image_path&&/^https?:\/\//i.test(p.image_path)?`<img class="plan-image" src="${esc(p.image_path)}" alt="${esc(p.name)}">`:'<div class="plan-image plan-placeholder">MYHD IPTV</div>';
    const features=Array.isArray(p.features)?p.features.filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join(""):"";
-   return `<article class="plan-card">${image}<div class="plan-content"><span class="eyebrow">${esc(p.category||"MYHD IPTV")}</span><h3>${esc(p.name)}</h3><p>${esc(p.description||"")}</p><div class="duration">${esc(duration(p))}</div>${features?`<ul>${features}</ul>`:""}<div class="price"><strong>${esc(p.price)} ${esc(p.currency||"")}</strong></div><div class="quantity-picker"><button type="button" class="quantity-btn minus" data-plan-id="${esc(p.id)}" aria-label="تقليل الكمية">−</button><span class="quantity-value" data-plan-id="${esc(p.id)}">${counts()[p.id]||0}</span><button type="button" class="quantity-btn plus" data-plan-id="${esc(p.id)}" aria-label="زيادة الكمية">＋</button><small>عدد الأكواد</small></div></div></article>`;
+   return `<article class="plan-card">${image}<div class="plan-content"><span class="eyebrow">${esc(p.category||"MYHD IPTV")}</span><h3>${esc(p.name)}</h3><p>${esc(p.description||"")}</p><div class="duration">${esc(duration(p))}</div>${features?`<ul>${features}</ul>`:""}<div class="price"><strong>${esc(p.price)} ${esc(p.currency||"")}</strong></div><div class="quantity-picker"><label for="qty-${esc(p.id)}">عدد الأكواد</label><input class="quantity-input" id="qty-${esc(p.id)}" data-plan-id="${esc(p.id)}" type="number" min="0" step="1" inputmode="numeric" value="${counts()[p.id]||0}" aria-label="عدد الأكواد من ${esc(p.name)}"></div></div></article>`;
   }).join("");
-  grid.querySelectorAll(".quantity-btn").forEach(btn=>btn.addEventListener("click",()=>{
-   const items=readCart(),id=btn.dataset.planId;
-   if(btn.classList.contains("plus"))items.push(id);else{const index=items.lastIndexOf(id);if(index>=0)items.splice(index,1);}
-   saveCart(items);updateCart();
+  grid.querySelectorAll(".quantity-input").forEach(input=>input.addEventListener("change",()=>{
+   const id=input.dataset.planId;
+   const quantity=Math.max(0,Math.min(999,Math.floor(Number(input.value)||0)));
+   const items=readCart().filter(x=>x!==id);
+   for(let i=0;i<quantity;i++)items.push(id);
+   saveCart(items);input.value=quantity;updateCart();
   }));
   updateCart();
  }

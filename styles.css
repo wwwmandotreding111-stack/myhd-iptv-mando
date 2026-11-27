@@ -99,3 +99,9 @@
 .coupon-totals b{color:var(--gold2);font-size:15px}
 .footer-ads{padding:0 8vw;margin:0 auto 30px;max-width:1400px}
 @media(max-width:620px){.store-ads-section{padding:15px 20px 0}.store-ad{gap:10px}.store-ad img{width:112px;height:78px}.store-ad b{font-size:13px}.store-ad small{font-size:10px}.coupon-entry{flex-direction:column}.coupon-entry .btn{width:100%}.footer-ads{padding:0 20px}}
+
+
+.confirm-order-btn{border:1px solid #478c61;background:linear-gradient(135deg,#1d5938,#16452d);color:#e1ffe9;border-radius:8px;padding:8px 11px;font:700 11px Cairo;white-space:nowrap;cursor:pointer;box-shadow:0 3px 12px #16452d55}
+.confirm-order-btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.confirmed-pill{display:inline-flex;align-items:center;gap:4px;border:1px solid #438b5c;background:#153823;color:#a7e8b9;border-radius:8px;padding:7px 10px;font:700 11px Cairo;white-space:nowrap}
+@media(max-width:620px){.order-tools{flex-wrap:wrap}.confirm-order-btn,.confirmed-pill{flex:1;text-align:center;justify-content:center}}

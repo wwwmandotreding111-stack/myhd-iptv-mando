@@ -76,7 +76,7 @@
  function statusName(s){return ({new:"جديد",processing:"قيد المعالجة",completed:"مكتمل",cancelled:"ملغي"})[s]||s;}
  function renderCustomers(){$("customersList").innerHTML=cache.customers.length?cache.customers.map(c=>'<article class="admin-item"><div><b>'+esc(c.full_name||"زبون")+'</b><small>تاريخ إنشاء الحساب: '+fmt(c.created_at)+'</small></div></article>').join(""):'<p class="muted">لا توجد حسابات زبائن مسجلة بعد. يمكن للزوار التسوق دون حساب.</p>';}
  function renderVisitors(){
-  const now=Date.now(),online=cache.visitors.filter(v=>new Date(v.last_seen).getTime()>now-300000),today=new Date();today.setHours(0,0,0,0);const week=Date.now()-7*86400000;
+  const now=Date.now(),activeRows=cache.visitors.filter(v=>new Date(v.last_seen).getTime()>now-300000),online=[...new Map(activeRows.map(v=>[v.visitor_key||v.session_id,v])).values()],today=new Date();today.setHours(0,0,0,0);const week=Date.now()-7*86400000;
   $("onlineCount").textContent=online.length;$("todayCount").textContent=cache.visits.filter(v=>new Date(v.visited_at).getTime()>=today.getTime()).length;$("weekCount").textContent=cache.visits.filter(v=>new Date(v.visited_at).getTime()>=week).length;
   $("onlineList").innerHTML=online.length?online.map(v=>'<article class="admin-item"><div><b><span class="live-dot"></span> زائر متصل</b><small>'+esc(v.page_path)+' · آخر نشاط '+fmt(v.last_seen)+'</small></div></article>').join(""):'<p class="muted">لا يوجد زوار نشطون خلال آخر 5 دقائق حالياً.</p>';
   $("visitsList").innerHTML=cache.visits.slice(0,30).map(v=>'<article class="admin-item"><div><b>'+esc(v.page_path||"/")+'</b><small>'+fmt(v.visited_at)+'</small></div></article>').join("")||'<p class="muted">لا توجد زيارات مسجلة بعد.</p>';

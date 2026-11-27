@@ -1,1 +1,56 @@
-myhd-card.svg
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+<defs>
+ <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#041735"/><stop offset=".52" stop-color="#087bd7"/><stop offset="1" stop-color="#03102b"/></linearGradient>
+ <radialGradient id="shine"><stop stop-color="#fff" stop-opacity=".85"/><stop offset=".38" stop-color="#61caff" stop-opacity=".45"/><stop offset="1" stop-color="#1688ff" stop-opacity="0"/></radialGradient>
+ <linearGradient id="silver" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#8bdcff"/></linearGradient>
+ <linearGradient id="skin" x2="0" y2="1"><stop stop-color="#ffd6b0"/><stop offset="1" stop-color="#bd7958"/></linearGradient>
+ <linearGradient id="shirt" x2="0" y2="1"><stop stop-color="#31baff"/><stop offset="1" stop-color="#0753a5"/></linearGradient>
+ <linearGradient id="cape" x2="1" y2="1"><stop stop-color="#ffcf55"/><stop offset="1" stop-color="#e45b32"/></linearGradient>
+</defs>
+<rect width="900" height="600" rx="28" fill="url(#bg)"/>
+<circle cx="450" cy="185" r="360" fill="url(#shine)"/>
+<path d="M0 360Q220 260 450 360T900 360V600H0Z" fill="#03152f" opacity=".76"/>
+<path d="M0 385Q220 285 450 385T900 385" fill="none" stroke="#a8e8ff" stroke-width="3" opacity=".45"/>
+<text x="450" y="72" fill="#fff" font-family="Arial,sans-serif" font-size="27" font-weight="bold" text-anchor="middle" letter-spacing="5">PREMIUM ENTERTAINMENT</text>
+<text x="450" y="143" fill="#fff" font-family="Georgia,serif" font-size="76" font-weight="bold" text-anchor="middle">MY HD</text>
+<text x="450" y="181" fill="#d9f5ff" font-family="Arial,sans-serif" font-size="22" text-anchor="middle">SPORTS  •  MOVIES  •  KIDS</text>
+<!-- original football champion -->
+<g transform="translate(175 220)">
+ <ellipse cx="0" cy="245" rx="85" ry="15" fill="#001026" opacity=".65"/>
+ <path d="M-31 125L-44 205L-31 242L-2 242L10 177L29 242L59 242L48 190L36 125Z" fill="#082e61"/>
+ <path d="M-30 72L-56 93L-48 154L-24 151L-15 117L-8 154L38 151L45 94L20 72Z" fill="url(#shirt)" stroke="#bcefff" stroke-width="3"/>
+ <path d="M-51 93L-72 146L-61 160L-42 126M40 94L62 143L52 158L34 126" fill="url(#skin)" stroke="#9b5e45" stroke-width="3"/>
+ <circle cy="42" r="35" fill="url(#skin)"/>
+ <path d="M-34 35Q-25 -10 12 7Q34 15 34 36L20 26L8 20L-10 28L-27 25Z" fill="#17243a"/>
+ <path d="M-13 44h7M10 44h7" stroke="#273247" stroke-width="4" stroke-linecap="round"/>
+ <path d="M-7 59Q0 65 8 58" fill="none" stroke="#874d3c" stroke-width="3" stroke-linecap="round"/>
+ <circle cx="82" cy="226" r="23" fill="#fff" stroke="#d9f5ff" stroke-width="3"/>
+ <path d="M82 208L92 218L88 232L76 236L68 224Z" fill="#14233b"/>
+</g>
+<!-- original adventure hero -->
+<g transform="translate(450 230)">
+ <ellipse cx="0" cy="235" rx="83" ry="14" fill="#001026" opacity=".65"/>
+ <path d="M-36 82Q-83 105 -70 220L-35 201L0 240L38 201L72 220Q83 115 35 82Z" fill="url(#cape)" opacity=".96"/>
+ <path d="M-29 119L-39 198L-25 235L-2 235L5 176L28 235L51 235L39 191L30 119Z" fill="#172e56"/>
+ <path d="M-35 78L-58 105L-42 151L-16 137L0 154L19 137L43 151L58 105L31 78Z" fill="#f0b83e" stroke="#fff0b5" stroke-width="3"/>
+ <path d="M-52 101L-73 160L-59 169L-33 129M49 101L72 159L58 170L34 130" fill="url(#skin)" stroke="#9b5e45" stroke-width="3"/>
+ <circle cy="42" r="34" fill="url(#skin)"/>
+ <path d="M-34 36Q-28 -3 9 6Q33 11 34 36L18 23L0 28L-20 21Z" fill="#3b241b"/>
+ <path d="M-13 45h6M9 45h6" stroke="#26354c" stroke-width="4" stroke-linecap="round"/>
+ <path d="M-7 59Q0 64 8 58" fill="none" stroke="#874d3c" stroke-width="3" stroke-linecap="round"/>
+ <path d="M-13 112L0 130L13 112" fill="#fff0b5"/>
+</g>
+<!-- original friendly cartoon mascot -->
+<g transform="translate(730 235)">
+ <ellipse cx="0" cy="230" rx="75" ry="13" fill="#001026" opacity=".65"/>
+ <path d="M-49 32L-65 -10L-25 8Q0 -4 25 8L65 -10L49 34Q63 65 48 105Q0 140 -48 105Q-63 65 -49 32Z" fill="#79e4cf" stroke="#e5fff9" stroke-width="5"/>
+ <ellipse cy="62" rx="42" ry="45" fill="#9ff3df"/>
+ <circle cx="-15" cy="55" r="6" fill="#17334a"/><circle cx="15" cy="55" r="6" fill="#17334a"/>
+ <path d="M-12 76Q0 88 12 76" fill="none" stroke="#247b76" stroke-width="4" stroke-linecap="round"/>
+ <path d="M-37 112L-49 190L-22 215L0 170L22 215L49 190L37 112Z" fill="#f5c64c" stroke="#fff0b5" stroke-width="4"/>
+ <path d="M-37 130L-65 157M37 130L65 157" stroke="#9ff3df" stroke-width="15" stroke-linecap="round"/>
+ <circle cx="0" cy="5" r="9" fill="#fff0a0"/>
+</g>
+<rect x="70" y="500" width="760" height="58" rx="18" fill="#061d3b" stroke="#75d8ff" stroke-width="2"/>
+<text x="450" y="538" fill="#fff" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle">WATCH ANYWHERE  •  ENJOY WITHOUT LIMITS</text>
+</svg>

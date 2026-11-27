@@ -10,7 +10,7 @@
       await db.from("visitor_sessions").insert({session_id:makeId(),visitor_key:visitorKey,page_path:(location.pathname||"/").slice(0,300),last_seen:new Date().toISOString()});
     }catch(e){}
   };
-  const visit=async()=>{try{await db.from("site_visits").insert({page_path:(location.pathname||"/").slice(0,300)});}catch(e){}};
+  const visit=async()=>{try{await db.from("site_visits").insert({page_path:(location.pathname||"/").slice(0,300),visitor_key:visitorKey});}catch(e){}};
   visit();ping();setInterval(ping,60000);
   document.addEventListener("visibilitychange",()=>{if(!document.hidden)ping();});
 })();

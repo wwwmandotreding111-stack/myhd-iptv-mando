@@ -317,3 +317,9 @@ footer{border-color:#dce7f4;color:#73839a;background:#fff}footer b{color:#0875d1
 @keyframes offer-outline-glow{0%,100%{box-shadow:inset 0 0 0 rgba(214,168,63,0)}50%{box-shadow:inset 0 0 18px rgba(214,168,63,.12)}}
 @media(prefers-reduced-motion:reduce){#plansGrid .discount-ribbon,#plansGrid .discount-spark,#plansGrid .plan-card.has-active-offer:after,#plansGrid .plan-card.has-active-offer .plan-art:after{animation:none!important}}
 @media(max-width:620px){#plansGrid .discount-ribbon{top:9px;right:9px;min-width:91px;padding:7px 10px}#plansGrid .discount-ribbon strong{font-size:19px}}
+
+/* Live countdown for limited-time package offers */
+#plansGrid .offer-countdown{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px;padding:9px 12px;border:1px solid #e4c77f;border-radius:11px;background:linear-gradient(110deg,#fff9e8,#fff);color:#77520e;font-size:11px;font-weight:800}
+#plansGrid .offer-countdown strong{font-size:17px;letter-spacing:1px;color:#a36d0c;font-variant-numeric:tabular-nums}
+#plansGrid .plan-card-vip .offer-countdown{background:linear-gradient(110deg,#fff8e5,#f8edcf);border-color:#d7b45f}
+@media(max-width:420px){#plansGrid .offer-countdown{padding:8px 9px;font-size:10px}#plansGrid .offer-countdown strong{font-size:15px}}

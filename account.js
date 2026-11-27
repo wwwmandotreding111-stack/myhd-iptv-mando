@@ -3,7 +3,6 @@
  if(!cfg.SUPABASE_URL||!cfg.SUPABASE_PUBLISHABLE_KEY){$("orderMessage").textContent="تعذر الاتصال بالخدمة حالياً.";form.hidden=true;return;}
  const db=window.supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_PUBLISHABLE_KEY);
  const planId=new URLSearchParams(location.search).get("plan");let plan=null;
- const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
  const duration=p=>p.duration_hours?(`${p.duration_hours} ساعة`):(p.duration_months?(`${p.duration_months} شهر`):"");
  async function loadPlan(){
   if(!planId){$("selectedPlanName").textContent="لم تختر باقة";form.hidden=true;return;}
@@ -16,22 +15,27 @@
   if(!plan||!name||!phone)return;
   const digits=String(cfg.WHATSAPP_NUMBER||"").replace(/\D/g,"");
   if(!digits){$("orderMessage").textContent="رقم واتساب الإدارة غير مضبوط بعد. يرجى المحاولة لاحقاً.";return;}
-  const btn=$("sendOrderBtn");btn.disabled=true;$("orderMessage").textContent="جارٍ تجهيز طلبك...";
-  const {data:order,error}=await db.from("orders").insert({subscription_id:plan.id,customer_id:null,customer_name:name,phone,notes:notes||null,status:"new"}).select("id").single();
-  btn.disabled=false;
-  if(error){$("orderMessage").textContent="لم نتمكن من حفظ الطلب. حاول مرة أخرى.";return;}
-  const message=[
-   "طلب اشتراك جديد - MYHD IPTV MANDO",
-   "رقم الطلب: "+order.id,
-   "الاسم: "+name,
-   "رقم العميل: "+phone,
-   "الباقة: "+plan.name,
-   "المدة: "+(duration(plan)||"حسب الباقة"),
-   "السعر: "+plan.price+" "+(plan.currency||""),
-   notes?"ملاحظات: "+notes:""
-  ].filter(Boolean).join("\n");
-  $("orderMessage").textContent="تم تجهيز الطلب. سيتم فتح واتساب لإرساله إليك.";
-  location.href="https://wa.me/"+digits+"?text="+encodeURIComponent(message);
+  const btn=$("sendOrderBtn");btn.disabled=true;$("orderMessage").textContent="جارٍ حفظ طلبك...";
+  try{
+   // Do not request returned rows: anonymous customers are intentionally allowed to INSERT orders but not SELECT them.
+   const {error}=await db.from("orders").insert({subscription_id:plan.id,customer_id:null,customer_name:name,phone,notes:notes||null,status:"new"});
+   if(error)throw error;
+   const message=[
+    "طلب اشتراك جديد - MYHD IPTV MANDO",
+    "الاسم: "+name,
+    "رقم العميل: "+phone,
+    "الباقة: "+plan.name,
+    "المدة: "+(duration(plan)||"حسب الباقة"),
+    "السعر: "+plan.price+" "+(plan.currency||""),
+    notes?"ملاحظات: "+notes:""
+   ].filter(Boolean).join("\n");
+   $("orderMessage").textContent="تم حفظ الطلب. سيتم فتح واتساب لإرساله إليك.";
+   location.href="https://wa.me/"+digits+"?text="+encodeURIComponent(message);
+  }catch(error){
+   console.error("MYHD order save failed:",error);
+   $("orderMessage").textContent="تعذر حفظ الطلب حالياً. تأكد من اتصال الإنترنت وحاول مجدداً.";
+   btn.disabled=false;
+  }
  });
  loadPlan();
 })();

@@ -20,7 +20,15 @@
  const withTimeout=(promise,ms)=>Promise.race([promise,new Promise((_,reject)=>setTimeout(()=>reject(new Error("timeout")),ms))]);
  const showLoadError=message=>{grid.innerHTML='<div class="empty-state">'+message+'</div><button class="retry-plans" type="button">إعادة تحميل الباقات</button>';grid.querySelector(".retry-plans")?.addEventListener("click",()=>{grid.innerHTML='<div class="loading">جارٍ إعادة تحميل الباقات...</div>';load().catch(()=>showLoadError("تعذر الاتصال حالياً. تحقق من الإنترنت ثم أعد المحاولة."));});};
  const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
- const duration=p=>p.duration_hours?(`${p.duration_hours} ساعة`):(p.duration_months?(`${p.duration_months} شهر`):"");
+ const duration=p=>{
+  if(p.duration_hours)return p.duration_hours+" ساعة";
+  const n=Number(p.duration_months||0);
+  if(!n)return "";
+  if(n===1)return "شهر";
+  if(n===2)return "شهرين";
+  if(n>=3&&n<=10)return n+" أشهر";
+  return n+" شهراً";
+ };
 
  function validWindow(x){return (!x.starts_at||new Date(x.starts_at).getTime()<=Date.now())&&(!x.ends_at||new Date(x.ends_at).getTime()>=Date.now());}
  function renderAdSlot(items,id){const el=document.getElementById(id);if(!el)return;el.innerHTML=items.map(a=>{const url=a.link_url&&/^https?:\/\//i.test(a.link_url)?a.link_url:"#plans";return '<a class="store-ad" href="'+esc(url)+'" '+(url!=="#plans"?'target="_blank" rel="noopener"':'')+'><img src="'+esc(a.image_path)+'" alt="'+esc(a.title||"إعلان MYHD")+'"><span><b>'+esc(a.title||"عرض خاص")+'</b><small>'+esc(a.description||"اكتشف العرض الآن")+'</small></span></a>';}).join("");el.hidden=!items.length;const wrap=id==="homeAdsList"?document.getElementById("homeAds"):null;if(wrap)wrap.hidden=!items.length;}
@@ -55,17 +63,23 @@
    const offer=offerByPlan.get(p.id);let finalPrice=Number(p.price||0);
    if(offer){finalPrice=offer.discount_type==="percent"?finalPrice*(1-Number(offer.discount_value)/100):finalPrice-Number(offer.discount_value);finalPrice=Math.max(0,finalPrice);}
 
-   return `<article class="plan-card ${vip?"plan-card-vip":""}"><div class="plan-art">${image}<span class="plan-art-label">${vip?"MY HD VIP":"MY HD"}</span></div><div class="plan-content"><span class="eyebrow">${esc(p.category||"MYHD IPTV")}</span><h3>${esc(p.name)}</h3>${p.description?`<p>${esc(p.description)}</p>`:""}<div class="duration">${esc(duration(p))}</div>${features?`<ul class="plan-features">${features}</ul>`:""}${offer?`<div class="price"><span class="offer-tag">عرض خاص</span><del>${esc(p.price)} ${esc(p.currency||"")}</del><strong>${finalPrice.toFixed(2).replace(/\.00$/,"")} ${esc(p.currency||"")}</strong></div><small class="offer-description">${esc(offer.title)}</small>`:`<div class="price"><strong>${esc(p.price)} ${esc(p.currency||"")}</strong></div>`}<div class="quantity-picker"><label for="qty-${esc(p.id)}">عدد الأكواد</label><input class="quantity-input" id="qty-${esc(p.id)}" data-plan-id="${esc(p.id)}" type="number" min="0" step="1" inputmode="numeric" value="1" aria-label="عدد الأكواد من ${esc(p.name)}"><button type="button" class="add-to-cart-btn" data-plan-id="${esc(p.id)}">إضافة إلى السلة</button><button type="button" class="plan-whatsapp-btn" data-whatsapp-plan="${esc(p.id)}">${Number(p.price||0)===0&&p.duration_hours===24?"اطلب التجربة المجانية":"اشترك عبر واتساب"}</button></div></div></article>`;
+   const isTrial=Number(p.price||0)===0&&Number(p.duration_hours)===24;
+   const title=(p.name||"MY HD")+(duration(p)?" - "+duration(p):"");
+   return `<article class="plan-card ${vip?"plan-card-vip":""}"><div class="plan-art">${image}<span class="plan-art-label">${vip?"✦ VIP مميز":"▣ اشتراك أساسي"}</span></div><div class="plan-content"><h3>${esc(title)}</h3>${p.description?`<p>${esc(p.description)}</p>`:""}${features?`<ul class="plan-features">${features}</ul>`:""}${offer?`<div class="price"><span class="offer-tag">عرض خاص</span><del>${esc(p.price)} ${esc(p.currency||"")}</del><strong>${finalPrice.toFixed(2).replace(/\.00$/,"")} ${esc(p.currency||"")}</strong></div><small class="offer-description">${esc(offer.title)}</small>`:`<div class="price"><strong>${esc(p.price)} ${esc(p.currency||"")}</strong></div>`}<div class="quantity-picker"><label for="qty-${esc(p.id)}">عدد الأكواد</label><input class="quantity-input" id="qty-${esc(p.id)}" data-plan-id="${esc(p.id)}" type="number" min="0" step="1" inputmode="numeric" value="1" aria-label="عدد الأكواد من ${esc(title)}"><button type="button" class="add-to-cart-btn" data-plan-id="${esc(p.id)}">أضف للسلة</button><button type="button" class="plan-whatsapp-btn" data-whatsapp-plan="${esc(p.id)}">${isTrial?"اطلب تجربة مجانية 24 ساعة":"اطلب الآن عبر واتساب"}</button></div></div></article>`;
   }).join("");
   grid.querySelectorAll("[data-whatsapp-plan]").forEach(btn=>btn.addEventListener("click",()=>{
    const id=btn.dataset.whatsappPlan,plan=data.find(p=>p.id===id),input=grid.querySelector('.quantity-input[data-plan-id="'+id+'"]');
    const quantity=Math.max(1,Math.min(99,Math.floor(Number(input?.value)||1)));
    const phone=String(cfg.WHATSAPP_NUMBER||"").replace(/\D/g,"");
    if(!phone){alert("رقم واتساب الدعم غير مضبوط حالياً.");return;}
-   const trial=Number(plan?.price||0)===0&&plan?.duration_hours===24;
+   const trial=Number(plan?.price||0)===0&&Number(plan?.duration_hours)===24;
+   const offer=offerByPlan.get(id);let amount=Number(plan?.price||0);
+   if(offer){amount=offer.discount_type==="percent"?amount*(1-Number(offer.discount_value)/100):amount-Number(offer.discount_value);amount=Math.max(0,amount);}
+   const priceText=amount.toFixed(2).replace(/\\.00$/,"")+" "+(plan?.currency||"");
+   const planTitle=(plan?.name||"MYHD IPTV")+(duration(plan)?" - "+duration(plan):"");
    const message=trial
-    ?"السلام عليكم، أريد طلب تجربة مجانية لمدة 24 ساعة من "+(plan?.name||"MYHD IPTV")+"."
-    :"السلام عليكم، أريد الاشتراك بباقة "+(plan?.name||"MYHD IPTV")+". الكمية المطلوبة: "+quantity+" كود/اشتراك. أرجو تأكيد السعر والتفاصيل.";
+    ?"السلام عليكم، أرغب في طلب تجربة مجانية لمدة 24 ساعة لخدمة "+(plan?.name||"MY HD")+"."
+    :"مرحباً، أنا مهتم بباقة "+planTitle+"، بسعر "+priceText+", والكمية "+quantity+" اشتراك. كيف يمكنني إتمام الطلب؟";
    window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(message),"_blank","noopener");
   }));
   grid.querySelectorAll(".add-to-cart-btn").forEach(btn=>btn.addEventListener("click",()=>{

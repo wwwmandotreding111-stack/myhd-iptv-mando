@@ -22,7 +22,9 @@
   <div class="dash-head"><div><span class="eyebrow">MYHD IPTV MANDO</span><h1>لوحة التحكم الرئيسية</h1><p class="muted">إدارة المتجر والاشتراكات والعروض من مكان واحد.</p></div><button class="btn btn-outline" id="refreshDashboard">↻ تحديث البيانات</button></div>
   <div class="stats admin-stats">
     <article><span class="stat-icon">◈</span><small>إجمالي الزيارات</small><b id="statVisits">—</b><em>منذ إطلاق الموقع</em></article>
-    <article><span class="stat-icon">◷</span><small>زيارات اليوم</small><b id="statToday">—</b><em>خلال آخر 24 ساعة</em></article>
+    <article><span class="stat-icon">◷</span><small>مشاهدات اليوم</small><b id="statToday">—</b><em>عدد الصفحات التي تمت مشاهدتها</em></article>
+    <article><span class="stat-icon">♙</span><small>أشخاص دخلوا اليوم</small><b id="statPeopleToday">—</b><em>زوار مميزون حسب المتصفح</em></article>
+    <article><span class="stat-icon">▤</span><small>طلبات اليوم</small><b id="statOrdersToday">—</b><em>طلبات جديدة خلال اليوم</em></article>
     <article><span class="stat-icon">●</span><small>متصلون الآن</small><b id="statOnline">—</b><em>آخر 5 دقائق</em></article>
     <article><span class="stat-icon">▣</span><small>طلبات الاشتراك</small><b id="statOrders">—</b><em>كل الطلبات المسجلة</em></article>
     <article><span class="stat-icon">◉</span><small>طلبات جديدة</small><b id="statPending">—</b><em>بانتظار المراجعة</em></article>
@@ -44,6 +46,7 @@
     <div class="admin-content">
       <section class="admin-tab active" id="tab-overview">
         <div class="welcome-panel"><div><span class="eyebrow">نظرة عامة</span><h2>أهلاً بك في إدارة MYHD</h2><p>تابع طلباتك، راقب الزوار، وانشر عروضك وإعلاناتك بسهولة.</p></div><div class="welcome-mark">MYHD <b>IPTV</b><small>MANDO</small></div></div>
+        <div id="analyticsCharts" class="admin-two-col analytics-charts"></div>
         <div class="admin-two-col">
           <div class="panel"><div class="panel-head"><h2>أحدث الطلبات</h2><button class="text-action" data-go="orders">عرض الكل ←</button></div><div id="recentOrders" class="admin-list"></div></div>
           <div class="panel"><div class="panel-head"><h2>ملخص سريع</h2></div><div class="quick-actions">
@@ -78,8 +81,8 @@
         <div class="section-toolbar"><div><span class="eyebrow">التسويق والخصومات</span><h2>أكواد الخصم</h2></div><button class="btn btn-gold" id="newCouponBtn">＋ إنشاء كود خصم</button></div>
         <form id="couponForm" class="panel admin-form" hidden><h3>إعداد كود خصم جديد</h3>
           <div class="form-grid"><div><label>كود الخصم</label><input id="couponCode" required maxlength="32" placeholder="مثال: MANDO20"></div>
-          <div><label>نوع الخصم</label><select id="couponType"><option value="percent">نسبة مئوية %</option><option value="fixed">مبلغ ثابت</option></select></div>
-          <div><label>قيمة الخصم</label><input id="couponValue" type="number" min=".01" step=".01" required></div>
+          <div><label>نوع الخصم</label><select id="couponType"><option value="fixed">مبلغ بالدولار ($)</option></select></div>
+          <div><label>قيمة الخصم بالدولار ($)</label><input id="couponValue" type="number" min=".01" step=".01" placeholder="مثال: 5" required></div>
           <div><label>يطبق على باقة</label><select id="couponPlan"><option value="">كل الباقات</option></select></div>
           <div><label>عدد مرات الاستخدام (فارغ = بلا حد)</label><input id="couponMax" type="number" min="1"></div>
           <div><label>تاريخ الانتهاء (اختياري)</label><input id="couponEnd" type="datetime-local"></div>
@@ -94,7 +97,7 @@
           <div class="form-grid"><div><label>عنوان العرض</label><input id="offerTitle" required placeholder="عرض لفترة محدودة"></div>
           <div><label>الباقة المستهدفة</label><select id="offerPlan" required></select></div>
           <div><label>نوع الخصم</label><select id="offerType"><option value="percent">نسبة مئوية %</option><option value="fixed">مبلغ ثابت</option></select></div>
-          <div><label>قيمة الخصم</label><input id="offerValue" type="number" min=".01" step=".01" required></div>
+          <div><label>قيمة الخصم بالدولار ($)</label><input id="offerValue" type="number" min=".01" step=".01" placeholder="مثال: 10" required></div>
           <div><label>تاريخ الانتهاء</label><input id="offerEnd" type="datetime-local"></div>
           <div class="wide"><label>وصف العرض</label><textarea id="offerDescription" rows="2"></textarea></div>
           <label class="check wide"><input id="offerActive" type="checkbox" checked> نشر العرض على صفحة المتجر</label></div>

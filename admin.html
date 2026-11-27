@@ -1,10 +1,127 @@
 <!doctype html>
-<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>لوحة الإدارة | MYHD IPTV MANDO</title><link rel="stylesheet" href="styles.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head>
-<body class="admin-page"><header class="admin-top"><a class="brand" href="index.html"><span class="brand-mark">M</span><span>MYHD <b>IPTV</b><small>ADMIN</small></span></a><span class="admin-label">لوحة التحكم</span></header>
-<main class="admin-wrap"><section id="adminLogin" class="auth-card"><span class="eyebrow">دخول آمن</span><h1>تسجيل دخول الإدارة</h1><label>البريد الإلكتروني</label><input id="adminEmail" type="email"><label>كلمة المرور</label><input id="adminPassword" type="password"><button class="btn btn-gold full" id="adminLoginBtn">دخول</button><p id="adminMessage" class="message"></p></section>
-<section id="dashboard" hidden><div class="dash-head"><div><span class="eyebrow">نظرة عامة</span><h1>مرحباً بك في الإدارة</h1></div><button class="btn btn-outline" id="adminLogout">تسجيل الخروج</button></div>
-<div class="stats"><article><small>الباقات النشطة</small><b id="statPlans">—</b></article><article><small>طلبات الاشتراك</small><b id="statOrders">—</b></article><article><small>طلبات جديدة</small><b id="statPending">—</b></article></div>
-<div class="admin-grid"><section class="panel"><div class="panel-head"><h2>إدارة الباقات</h2><button class="btn btn-gold" id="newPlanBtn">+ إضافة باقة</button></div>
-<form id="planForm" hidden><input type="hidden" id="planId"><label>اسم الباقة</label><input id="planName" required><label>التصنيف</label><input id="planCategory" placeholder="MY HD أو MY HD VIP"><div class="two"><div><label>السعر</label><input id="planPrice" type="number" min="0" step="0.01" required></div><div><label>العملة</label><input id="planCurrency" value="USD" required></div></div><div class="two"><div><label>المدة بالأشهر</label><input id="planMonths" type="number" min="1"></div><div><label>المدة بالساعات (للتجربة)</label><input id="planHours" type="number" min="1"></div></div><label>رابط صورة البطاقة</label><input id="planImage" type="url" placeholder="https://..."><label>الوصف</label><textarea id="planDescription" rows="2"></textarea><label class="check"><input id="planActive" type="checkbox" checked> باقة ظاهرة بالموقع</label><div class="auth-actions"><button class="btn btn-gold" type="submit">حفظ الباقة</button><button class="btn btn-outline" type="button" id="cancelPlan">إلغاء</button></div></form>
-<div id="adminPlans" class="admin-list"></div></section><section class="panel"><h2>طلبات الاشتراك</h2><div id="ordersList" class="admin-list">لا توجد بيانات بعد.</div></section></div><p id="dashboardMessage" class="message"></p></section></main>
-<script src="config.js"></script><script src="admin.js"></script></body></html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090909">
+<title>لوحة الإدارة | MYHD IPTV MANDO</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="admin-page">
+<header class="admin-top">
+  <a class="brand" href="index.html"><span class="brand-mark">M</span><span>MYHD <b>IPTV</b><small>MANDO · CONTROL</small></span></a>
+  <div class="admin-top-actions"><span class="admin-label">مركز إدارة المتجر</span><button class="btn btn-outline" id="adminLogout">تسجيل الخروج</button></div>
+</header>
+<main class="admin-wrap">
+<section id="adminLogin" class="auth-card">
+  <span class="eyebrow">دخول آمن للمسؤولين</span><h1>تسجيل دخول الإدارة</h1>
+  <label for="adminEmail">البريد الإلكتروني</label><input id="adminEmail" type="email" autocomplete="username">
+  <label for="adminPassword">كلمة المرور</label><input id="adminPassword" type="password" autocomplete="current-password">
+  <button class="btn btn-gold full" id="adminLoginBtn">دخول إلى لوحة التحكم</button><p id="adminMessage" class="message"></p>
+</section>
+<section id="dashboard" hidden>
+  <div class="dash-head"><div><span class="eyebrow">MYHD IPTV MANDO</span><h1>لوحة التحكم الرئيسية</h1><p class="muted">إدارة المتجر والاشتراكات والعروض من مكان واحد.</p></div><button class="btn btn-outline" id="refreshDashboard">↻ تحديث البيانات</button></div>
+  <div class="stats admin-stats">
+    <article><span class="stat-icon">◈</span><small>إجمالي الزيارات</small><b id="statVisits">—</b><em>منذ إطلاق الموقع</em></article>
+    <article><span class="stat-icon">◷</span><small>زيارات اليوم</small><b id="statToday">—</b><em>خلال آخر 24 ساعة</em></article>
+    <article><span class="stat-icon">●</span><small>متصلون الآن</small><b id="statOnline">—</b><em>آخر 5 دقائق</em></article>
+    <article><span class="stat-icon">▣</span><small>طلبات الاشتراك</small><b id="statOrders">—</b><em>كل الطلبات المسجلة</em></article>
+    <article><span class="stat-icon">◉</span><small>طلبات جديدة</small><b id="statPending">—</b><em>بانتظار المراجعة</em></article>
+    <article><span class="stat-icon">◇</span><small>الباقات النشطة</small><b id="statPlans">—</b><em>متاحة للزبائن</em></article>
+  </div>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-caption">القائمة الرئيسية</div>
+      <button class="admin-nav active" data-tab="overview">⌂ <span>الرئيسية</span></button>
+      <button class="admin-nav" data-tab="plans">▣ <span>إدارة الباقات</span></button>
+      <button class="admin-nav" data-tab="orders">▤ <span>الطلبات والزبائن</span><b id="newOrderBadge">0</b></button>
+      <button class="admin-nav" data-tab="visitors">◉ <span>الزائرون والمتصلون</span></button>
+      <button class="admin-nav" data-tab="coupons">٪ <span>أكواد الخصم</span></button>
+      <button class="admin-nav" data-tab="offers">✦ <span>عروض الباقات</span></button>
+      <button class="admin-nav" data-tab="ads">▧ <span>الإعلانات والصور</span></button>
+      <button class="admin-nav" data-tab="activity">◷ <span>سجل النشاط</span></button>
+      <a class="admin-side-link" href="index.html" target="_blank">↗ معاينة المتجر</a>
+    </aside>
+    <div class="admin-content">
+      <section class="admin-tab active" id="tab-overview">
+        <div class="welcome-panel"><div><span class="eyebrow">نظرة عامة</span><h2>أهلاً بك في إدارة MYHD</h2><p>تابع طلباتك، راقب الزوار، وانشر عروضك وإعلاناتك بسهولة.</p></div><div class="welcome-mark">MYHD <b>IPTV</b><small>MANDO</small></div></div>
+        <div class="admin-two-col">
+          <div class="panel"><div class="panel-head"><h2>أحدث الطلبات</h2><button class="text-action" data-go="orders">عرض الكل ←</button></div><div id="recentOrders" class="admin-list"></div></div>
+          <div class="panel"><div class="panel-head"><h2>ملخص سريع</h2></div><div class="quick-actions">
+            <button data-go="plans">＋ إضافة باقة</button><button data-go="coupons">٪ إنشاء كود خصم</button><button data-go="ads">▧ إضافة إعلان</button><button data-go="visitors">◉ عرض المتصلين</button>
+          </div><p class="muted small-note">تظهر الإعلانات النشطة في واجهة المتجر، وتُدار الصور من مساحة تخزين آمنة.</p></div>
+        </div>
+      </section>
+      <section class="admin-tab" id="tab-plans">
+        <div class="section-toolbar"><div><span class="eyebrow">المنتجات والاشتراكات</span><h2>إدارة الباقات</h2></div><button class="btn btn-gold" id="newPlanBtn">＋ إضافة باقة</button></div>
+        <form id="planForm" class="panel admin-form" hidden>
+          <input type="hidden" id="planId"><h3 id="planFormTitle">إضافة باقة جديدة</h3>
+          <div class="form-grid"><div><label>اسم الباقة</label><input id="planName" required></div><div><label>التصنيف</label><input id="planCategory" placeholder="MY HD أو MY HD VIP"></div>
+          <div><label>السعر</label><input id="planPrice" type="number" min="0" step=".01" required></div><div><label>العملة</label><input id="planCurrency" value="USD"></div>
+          <div><label>المدة بالأشهر</label><input id="planMonths" type="number" min="1"></div><div><label>المدة بالساعات (للتجربة)</label><input id="planHours" type="number" min="1"></div>
+          <div class="wide"><label>رابط صورة البطاقة</label><input id="planImage" type="url" placeholder="https://..."></div><div class="wide"><label>وصف الباقة</label><textarea id="planDescription" rows="2"></textarea></div>
+          <label class="check wide"><input id="planActive" type="checkbox" checked> إظهار الباقة في المتجر</label></div>
+          <div class="auth-actions"><button class="btn btn-gold" type="submit">حفظ الباقة</button><button class="btn btn-outline" type="button" id="cancelPlan">إلغاء</button></div>
+        </form><div id="adminPlans" class="admin-list panel"></div>
+      </section>
+      <section class="admin-tab" id="tab-orders">
+        <div class="section-toolbar"><div><span class="eyebrow">المبيعات وخدمة العملاء</span><h2>الطلبات والزبائن</h2></div><button class="btn btn-outline" id="exportOrders">تصدير CSV</button></div>
+        <div class="panel"><div class="filter-row"><input id="orderSearch" placeholder="ابحث بالاسم أو رقم الهاتف..." aria-label="بحث الطلبات"><select id="orderFilter"><option value="all">كل الحالات</option><option value="new">جديد</option><option value="processing">قيد المعالجة</option><option value="completed">مكتمل</option><option value="cancelled">ملغي</option></select></div><div id="ordersList" class="admin-list"></div></div>
+        <div class="panel customers-panel"><h3>حسابات الزبائن المسجلة</h3><div id="customersList" class="admin-list"></div></div>
+      </section>
+      <section class="admin-tab" id="tab-visitors">
+        <div class="section-toolbar"><div><span class="eyebrow">تحليلات المتجر</span><h2>الزائرون والمتصلون</h2></div><button class="btn btn-outline" id="refreshVisitors">تحديث الآن</button></div>
+        <div class="stats mini-stats"><article><small>متصلون الآن</small><b id="onlineCount">—</b></article><article><small>زيارات اليوم</small><b id="todayCount">—</b></article><article><small>زيارات آخر 7 أيام</small><b id="weekCount">—</b></article></div>
+        <div class="panel"><h3>المتصلون خلال آخر 5 دقائق</h3><div id="onlineList" class="admin-list"></div></div>
+        <div class="panel"><h3>أحدث الزيارات</h3><div id="visitsList" class="admin-list"></div></div>
+      </section>
+      <section class="admin-tab" id="tab-coupons">
+        <div class="section-toolbar"><div><span class="eyebrow">التسويق والخصومات</span><h2>أكواد الخصم</h2></div><button class="btn btn-gold" id="newCouponBtn">＋ إنشاء كود خصم</button></div>
+        <form id="couponForm" class="panel admin-form" hidden><h3>إعداد كود خصم جديد</h3>
+          <div class="form-grid"><div><label>كود الخصم</label><input id="couponCode" required maxlength="32" placeholder="مثال: MANDO20"></div>
+          <div><label>نوع الخصم</label><select id="couponType"><option value="percent">نسبة مئوية %</option><option value="fixed">مبلغ ثابت</option></select></div>
+          <div><label>قيمة الخصم</label><input id="couponValue" type="number" min=".01" step=".01" required></div>
+          <div><label>يطبق على باقة</label><select id="couponPlan"><option value="">كل الباقات</option></select></div>
+          <div><label>عدد مرات الاستخدام (فارغ = بلا حد)</label><input id="couponMax" type="number" min="1"></div>
+          <div><label>تاريخ الانتهاء (اختياري)</label><input id="couponEnd" type="datetime-local"></div>
+          <label class="check wide"><input id="couponActive" type="checkbox" checked> تفعيل الكود مباشرة</label></div>
+          <div class="auth-actions"><button class="btn btn-gold" type="submit">حفظ كود الخصم</button><button class="btn btn-outline" type="button" id="cancelCoupon">إلغاء</button></div>
+        </form><div id="couponsList" class="admin-list panel"></div>
+        <p class="muted small-note">يمكن للزبون إدخال الكود في صفحة إتمام الطلب. الخصومات تُعرض بوضوح قبل إرسال الطلب.</p>
+      </section>
+      <section class="admin-tab" id="tab-offers">
+        <div class="section-toolbar"><div><span class="eyebrow">العروض الترويجية</span><h2>عروض الباقات</h2></div><button class="btn btn-gold" id="newOfferBtn">＋ إضافة عرض</button></div>
+        <form id="offerForm" class="panel admin-form" hidden><h3>إنشاء عرض على باقة</h3>
+          <div class="form-grid"><div><label>عنوان العرض</label><input id="offerTitle" required placeholder="عرض لفترة محدودة"></div>
+          <div><label>الباقة المستهدفة</label><select id="offerPlan" required></select></div>
+          <div><label>نوع الخصم</label><select id="offerType"><option value="percent">نسبة مئوية %</option><option value="fixed">مبلغ ثابت</option></select></div>
+          <div><label>قيمة الخصم</label><input id="offerValue" type="number" min=".01" step=".01" required></div>
+          <div><label>تاريخ الانتهاء</label><input id="offerEnd" type="datetime-local"></div>
+          <div class="wide"><label>وصف العرض</label><textarea id="offerDescription" rows="2"></textarea></div>
+          <label class="check wide"><input id="offerActive" type="checkbox" checked> نشر العرض على صفحة المتجر</label></div>
+          <div class="auth-actions"><button class="btn btn-gold" type="submit">نشر العرض</button><button class="btn btn-outline" type="button" id="cancelOffer">إلغاء</button></div>
+        </form><div id="offersList" class="admin-list panel"></div>
+      </section>
+      <section class="admin-tab" id="tab-ads">
+        <div class="section-toolbar"><div><span class="eyebrow">التسويق والإعلانات</span><h2>الإعلانات والصور</h2></div><button class="btn btn-gold" id="newAdBtn">＋ إضافة إعلان</button></div>
+        <form id="adForm" class="panel admin-form" hidden><h3>إضافة إعلان جديد</h3>
+          <div class="form-grid"><div><label>عنوان الإعلان</label><input id="adTitle" required></div>
+          <div><label>مكان الظهور</label><select id="adPlacement"><option value="home">أعلى الصفحة الرئيسية</option><option value="plans">قبل الباقات</option><option value="footer">أسفل المتجر</option></select></div>
+          <div class="wide"><label>صورة الإعلان (JPG / PNG / WEBP حتى 5MB)</label><input id="adImage" type="file" accept="image/jpeg,image/png,image/webp" required><div id="adPreview" class="ad-preview">معاينة الصورة ستظهر هنا</div></div>
+          <div class="wide"><label>رابط عند الضغط (اختياري)</label><input id="adLink" type="url" placeholder="https://..."></div>
+          <div class="wide"><label>وصف قصير (اختياري)</label><textarea id="adDescription" rows="2"></textarea></div>
+          <div><label>تاريخ انتهاء الإعلان (اختياري)</label><input id="adEnd" type="datetime-local"></div>
+          <label class="check"><input id="adActive" type="checkbox" checked> نشر الإعلان فوراً</label></div>
+          <div class="auth-actions"><button class="btn btn-gold" type="submit">رفع الصورة ونشر الإعلان</button><button class="btn btn-outline" type="button" id="cancelAd">إلغاء</button></div>
+        </form><div id="adsList" class="admin-list panel"></div>
+      </section>
+      <section class="admin-tab" id="tab-activity">
+        <div class="section-toolbar"><div><span class="eyebrow">الأمان والمتابعة</span><h2>سجل نشاط الإدارة</h2></div></div>
+        <div class="panel"><div id="activityList" class="admin-list"></div></div>
+      </section>
+    </div>
+  </div>
+  <p id="dashboardMessage" class="message"></p>
+</section>
+</main>
+<script src="config.js"></script><script src="admin.js"></script>
+</body></html>

@@ -271,3 +271,22 @@ footer{border-color:#dce7f4;color:#73839a;background:#fff}footer b{color:#0875d1
 .faq-list summary{color:#0759b8}
 .faq-list p{color:#526985}
 @media(max-width:620px){#plansGrid .plan-content .quantity-picker{grid-template-columns:minmax(70px,1fr) 68px minmax(98px,1.2fr);gap:7px}#plansGrid .plan-content .plan-whatsapp-btn{font-size:13px}}
+
+
+/* Premium finishing pass: gold VIP identity, clear TV marks and real-feedback invitation */
+#plansGrid .plan-card-vip{border:1.5px solid #c99a3c!important;box-shadow:0 14px 36px rgba(171,124,35,.18)!important;background:linear-gradient(155deg,#fffdf7,#fff 62%)}
+#plansGrid .plan-card-vip .plan-art{background:linear-gradient(135deg,#211707,#8c641d 54%,#2d200b)!important}
+#plansGrid .plan-card-vip .plan-art-label{background:linear-gradient(135deg,#f7e4a8,#c39232)!important;color:#342407!important;border:1px solid #e7c66e}
+#plansGrid .plan-card-vip .plan-content h3{color:#765016!important}
+#plansGrid .plan-card-vip .plan-content .price strong{color:#95691d!important}
+#plansGrid .plan-art-label{display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border-radius:999px;box-shadow:0 5px 16px rgba(0,0,0,.16)}
+#plansGrid .plan-art-label:before{content:"▣";font-size:15px;line-height:1}
+#plansGrid .plan-card-vip .plan-art-label:before{content:"✦"}
+@media(min-width:1000px){#plansGrid.plans-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}}
+.reviews-section{padding-top:35px}
+.review-invite{display:flex;align-items:center;gap:20px;padding:25px 28px;border:1px solid #d7c18e;border-radius:16px;background:linear-gradient(120deg,#fffdf7,#f7f1e3);color:#282114;box-shadow:0 10px 28px rgba(105,77,26,.08)}
+.review-mark{flex:0 0 52px;height:52px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,#f5df9e,#d0a247);color:#4d3509;font-size:26px}
+.review-invite h3{margin:0 0 5px;color:#674a13;font-size:19px}
+.review-invite p{margin:0;color:#695f4c;font-size:13px;line-height:1.9}
+.review-invite .btn{flex:0 0 auto;white-space:nowrap}
+@media(max-width:760px){.review-invite{align-items:stretch;flex-direction:column;padding:21px}.review-invite .btn{width:100%;white-space:normal}.review-mark{width:52px}}

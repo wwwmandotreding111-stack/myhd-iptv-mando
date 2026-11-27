@@ -4,6 +4,8 @@
 <main class="auth-card"><span class="eyebrow">منطقة العملاء</span><h1>حسابي</h1><p class="muted">سجّل الدخول لمتابعة طلباتك واشتراكاتك.</p>
 <div id="authForms"><label>البريد الإلكتروني</label><input id="email" type="email" autocomplete="email" placeholder="name@example.com"><label>كلمة المرور</label><input id="password" type="password" autocomplete="current-password" placeholder="كلمة المرور">
 <div class="auth-actions"><button class="btn btn-gold" id="loginBtn">تسجيل الدخول</button><button class="btn btn-outline" id="signupBtn">إنشاء حساب</button></div></div>
-<div id="accountState" hidden><h3 id="welcome"></h3><p id="accountInfo" class="muted"></p><button class="btn btn-outline" id="logoutBtn">تسجيل الخروج</button></div>
+<div id="accountState" hidden><h3 id="welcome"></h3><p id="accountInfo" class="muted"></p>
+<section id="orderBox" hidden><h2>تأكيد طلب الاشتراك</h2><p id="selectedPlan" class="muted"></p><label>الاسم الكامل</label><input id="customerName" autocomplete="name" placeholder="اسمك"><label>رقم الهاتف للتواصل</label><input id="customerPhone" type="tel" autocomplete="tel" placeholder="رقم الهاتف"><label>ملاحظات (اختياري)</label><textarea id="orderNotes" rows="3" placeholder="أي تفاصيل إضافية"></textarea><button class="btn btn-gold full" id="sendOrderBtn">إرسال طلب الاشتراك</button><p id="orderMessage" class="message" role="status"></p></section>
+<button class="btn btn-outline" id="logoutBtn">تسجيل الخروج</button></div>
 <p id="authMessage" class="message" role="status"></p><a class="back-link" href="index.html">العودة إلى الموقع</a></main>
 <script src="config.js"></script><script src="account.js"></script></body></html>

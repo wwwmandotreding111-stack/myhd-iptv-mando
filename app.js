@@ -20,7 +20,7 @@
  const duration=p=>p.duration_hours?(`${p.duration_hours} ساعة`):(p.duration_months?(`${p.duration_months} شهر`):"");
 
  function validWindow(x){return (!x.starts_at||new Date(x.starts_at).getTime()<=Date.now())&&(!x.ends_at||new Date(x.ends_at).getTime()>=Date.now());}
- function renderAdSlot(items,id){const el=document.getElementById(id);if(!el)return;el.innerHTML=items.map(a=>{const url=a.link_url&&/^https?:\/\//i.test(a.link_url)?a.link_url:"#plans";return '<a class="store-ad" href="'+esc(url)+'" '+(url!=="#plans"?'target="_blank" rel="noopener"':'')+'><img src="'+esc(a.image_path)+'" alt="'+esc(a.title||"إعلان MYHD")+'"><span><b>'+esc(a.title||"عرض خاص")+'</b><small>'+esc(a.description||"اكتشف العرض الآن")+'</small></span></a>';}).join("");el.hidden=!items.length;}
+ function renderAdSlot(items,id){const el=document.getElementById(id);if(!el)return;el.innerHTML=items.map(a=>{const url=a.link_url&&/^https?:\/\//i.test(a.link_url)?a.link_url:"#plans";return '<a class="store-ad" href="'+esc(url)+'" '+(url!=="#plans"?'target="_blank" rel="noopener"':'')+'><img src="'+esc(a.image_path)+'" alt="'+esc(a.title||"إعلان MYHD")+'"><span><b>'+esc(a.title||"عرض خاص")+'</b><small>'+esc(a.description||"اكتشف العرض الآن")+'</small></span></a>';}).join("");el.hidden=!items.length;const wrap=id==="homeAdsList"?document.getElementById("homeAds"):null;if(wrap)wrap.hidden=!items.length;}
  async function load(){
   const {data,error}=await db.from("subscriptions").select("id,name,category,duration_months,duration_hours,price,currency,image_path,description,features").eq("is_active",true).order("sort_order").order("created_at");
   if(error){grid.innerHTML='<div class="empty-state">تعذر تحميل الباقات. يرجى المحاولة لاحقاً.</div>';return;}

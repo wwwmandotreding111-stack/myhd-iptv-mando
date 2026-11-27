@@ -15,7 +15,7 @@
 
 /* Quantity selection and persistent checkout bar */
 .quantity-picker{display:flex;align-items:center;gap:12px;margin-top:18px;padding:10px 12px;border:1px solid #514329;border-radius:10px;background:#100f0c}
-.quantity-picker small{margin-right:auto;color:var(--muted);font-size:11px}
+.quantity-picker label{margin-left:auto;color:var(--muted);font-size:12px}.quantity-input{width:76px;height:38px;padding:4px 8px;border:1px solid #8a6c36;border-radius:8px;background:#211b10;color:var(--gold2);font:900 17px Cairo;text-align:center;outline:none}.quantity-input:focus{border-color:var(--gold2);box-shadow:0 0 0 2px #c49a3a33}.quantity-input::-webkit-inner-spin-button,.quantity-input::-webkit-outer-spin-button{opacity:1}
 .quantity-value{min-width:25px;text-align:center;font-weight:900;color:var(--gold2);font-size:18px}
 .quantity-btn{width:35px;height:35px;border:1px solid #8a6c36;border-radius:8px;background:#211b10;color:var(--gold2);font:900 21px 'Cairo';cursor:pointer}
 .quantity-btn:active{transform:scale(.95)}

@@ -229,3 +229,23 @@ footer{border-color:#dce7f4;color:#73839a;background:#fff}footer b{color:#0875d1
 .btn-wholesale span{font-size:18px;line-height:1}
 .wholesale-note{display:block;margin-top:10px;color:#526985;font-size:12px}
 @media(max-width:760px){.hero-actions{display:grid;grid-template-columns:1fr;gap:10px}.hero-actions .btn{width:100%}.wholesale-note{text-align:center}}
+
+
+/* WhatsApp app picker */
+.btn-wholesale{font:inherit;cursor:pointer}
+.wa-choice-backdrop{position:fixed;z-index:9999;inset:0;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(5,18,38,.68);backdrop-filter:blur(5px)}
+.wa-choice-backdrop[hidden]{display:none}
+.wa-choice-panel{position:relative;width:min(100%,420px);padding:30px 24px 24px;border:1px solid #d9e7f5;border-radius:22px;background:#fff;box-shadow:0 24px 80px #001a3d55;text-align:center;color:#183b67}
+.wa-choice-close{position:absolute;top:12px;left:14px;width:36px;height:36px;border:0;border-radius:50%;background:#eff5fb;color:#34536f;font-size:25px;cursor:pointer}
+.wa-choice-icon{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#fff0b8,#d9a62a);color:#674a08;font-size:25px}
+.wa-choice-panel h2{margin:14px 0 6px;font-size:23px;color:#15365f}
+.wa-choice-panel>p{margin:0 0 20px;color:#647991;font-size:13px;line-height:1.8}
+.wa-choice-option{display:flex;align-items:center;gap:13px;width:100%;margin:10px 0;padding:13px 15px;border:1px solid #cfe0f0;border-radius:14px;background:#f6faff;color:#183b67;text-align:right;cursor:pointer;transition:.18s}
+.wa-choice-option:hover{border-color:#0875d1;background:#edf7ff;transform:translateY(-1px)}
+.wa-choice-symbol{display:grid;place-items:center;flex:0 0 42px;height:42px;border-radius:12px;background:#e1f5e9;color:#16834a;font-size:23px}
+.wa-choice-option.business .wa-choice-symbol{background:#e7f2ff;color:#0875d1}
+.wa-choice-option>span:nth-child(2){display:grid;gap:3px}
+.wa-choice-option b{font-size:15px}.wa-choice-option small{font-size:11px;color:#70849b}
+.wa-choice-arrow{margin-right:auto;color:#0875d1;font-size:19px}
+.wa-choice-foot{display:block;margin-top:15px;color:#7b8da1;font-size:11px;line-height:1.7}
+@media(max-width:480px){.wa-choice-panel{padding:28px 18px 20px}.wa-choice-panel h2{font-size:21px}}

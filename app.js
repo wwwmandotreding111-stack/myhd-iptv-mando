@@ -61,7 +61,7 @@
    const vip=/vip/i.test((p.name||"")+" "+(p.category||""));const fallbackImage=vip?"/assets/myhd-vip-card.svg":"/assets/myhd-card.svg";const remoteImage=p.image_path&&/^https?:\/\//i.test(p.image_path)?p.image_path:fallbackImage;const image='<img class="plan-image" src="'+esc(remoteImage)+'" alt="'+esc(p.name)+'" loading="lazy" onerror="this.onerror=null;this.src=\''+fallbackImage+'\';">';
    const features=Array.isArray(p.features)?p.features.filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join(""):"";
    const offer=offerByPlan.get(p.id);let finalPrice=Number(p.price||0);
-   if(offer){finalPrice=offer.discount_type==="percent"?finalPrice*(1-Number(offer.discount_value)/100):finalPrice-Number(offer.discount_value);finalPrice=Math.max(0,finalPrice);}
+   if(offer){finalPrice=Math.max(0,finalPrice-Number(offer.discount_value||0));}
 
    const isTrial=Number(p.price||0)===0&&Number(p.duration_hours)===24;
    const cleanPlanName=(p.name||"MY HD").replace(/\s*[-–—|:]?\s*\d+\s*(?:شهرًا|شهراً|أشهر|شهرين|شهر|months?|mos?)\s*$/i,"").trim();
@@ -76,7 +76,7 @@
    if(!phone){alert("رقم واتساب الدعم غير مضبوط حالياً.");return;}
    const trial=Number(plan?.price||0)===0&&Number(plan?.duration_hours)===24;
    const offer=offerByPlan.get(id);let amount=Number(plan?.price||0);
-   if(offer){amount=offer.discount_type==="percent"?amount*(1-Number(offer.discount_value)/100):amount-Number(offer.discount_value);amount=Math.max(0,amount);}
+   if(offer){amount=Math.max(0,amount-Number(offer.discount_value||0));}
    const priceText=(Number.isInteger(amount)?String(amount):amount.toFixed(2))+" "+(plan?.currency||"");
    const cleanPlanName=(plan?.name||"MYHD IPTV").replace(/\s*[-–—|:]?\s*\d+\s*(?:شهرًا|شهراً|أشهر|شهرين|شهر|months?|mos?)\s*$/i,"").trim();
    const planTitle=cleanPlanName+(duration(plan)?" - "+duration(plan):"");

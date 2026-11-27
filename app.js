@@ -75,7 +75,7 @@
    const trial=Number(plan?.price||0)===0&&Number(plan?.duration_hours)===24;
    const offer=offerByPlan.get(id);let amount=Number(plan?.price||0);
    if(offer){amount=offer.discount_type==="percent"?amount*(1-Number(offer.discount_value)/100):amount-Number(offer.discount_value);amount=Math.max(0,amount);}
-   const priceText=amount.toFixed(2).replace(/\\.00$/,"")+" "+(plan?.currency||"");
+   const priceText=(Number.isInteger(amount)?String(amount):amount.toFixed(2))+" "+(plan?.currency||"");
    const planTitle=(plan?.name||"MYHD IPTV")+(duration(plan)?" - "+duration(plan):"");
    const message=trial
     ?"السلام عليكم، أرغب في طلب تجربة مجانية لمدة 24 ساعة لخدمة "+(plan?.name||"MY HD")+"."

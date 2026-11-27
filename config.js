@@ -1,7 +1,6 @@
-// ضع بيانات مشروع MYHD IPTV MANDO المستقل هنا بعد ربط Supabase.
-// استخدم Project URL و Publishable key فقط. ممنوع وضع service_role أو secret key في المتصفح.
+// Public client configuration for the dedicated MYHD IPTV MANDO project.
 window.MYHD_CONFIG = {
-  SUPABASE_URL: "PASTE_MYHD_SUPABASE_PROJECT_URL",
-  SUPABASE_PUBLISHABLE_KEY: "PASTE_MYHD_SUPABASE_PUBLISHABLE_KEY",
+  SUPABASE_URL: "https://eryrzffmiepvjxejycgk.supabase.co",
+  SUPABASE_PUBLISHABLE_KEY: "sb_publishable_zTpQp4Xo0DPQMmlCmiXZiw_wILe6Pu_",
   WHATSAPP_NUMBER: ""
 };

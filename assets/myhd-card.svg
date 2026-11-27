@@ -1,181 +1,198 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" width="100%" height="100%">
   <defs>
-    <!-- تدرجات لونية -->
-    <linearGradient id="bgGrad" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0a0a0a"/>
-      <stop offset="50%" stop-color="#1a1508"/>
-      <stop offset="100%" stop-color="#000000"/>
-    </linearGradient>
-    <linearGradient id="goldGrad" x2="0" y2="1">
-      <stop offset="0%" stop-color="#ffea7c"/>
-      <stop offset="50%" stop-color="#e6b325"/>
-      <stop offset="100%" stop-color="#b57e10"/>
-    </linearGradient>
-    <linearGradient id="silverGrad" x2="0" y2="1">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#a0a0a0"/>
-    </linearGradient>
-    <linearGradient id="screenGrad" x2="0" y2="1">
-      <stop offset="0%" stop-color="#2a5a8a"/>
-      <stop offset="100%" stop-color="#0f2b45"/>
-    </linearGradient>
-    <linearGradient id="btnGrad" x2="1" y2="0">
-      <stop offset="0%" stop-color="#e6b325"/>
-      <stop offset="100%" stop-color="#ffea7c"/>
+    <!-- تدرجات الخلفية -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0514"/>
+      <stop offset="50%" stop-color="#160a2b"/>
+      <stop offset="100%" stop-color="#05010a"/>
     </linearGradient>
     
-    <!-- توهج -->
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+    <linearGradient id="purplePink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8A2BE2"/>
+      <stop offset="100%" stop-color="#FF1493"/>
+    </linearGradient>
+
+    <linearGradient id="pinkRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF1493"/>
+      <stop offset="100%" stop-color="#FF0000"/>
+    </linearGradient>
+
+    <linearGradient id="bluePurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0000FF"/>
+      <stop offset="100%" stop-color="#8A2BE2"/>
+    </linearGradient>
+
+    <linearGradient id="logoText" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4B0082"/>
+      <stop offset="50%" stop-color="#DA70D6"/>
+      <stop offset="100%" stop-color="#FF1493"/>
+    </linearGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#FF1493" flood-opacity="0.5"/>
+    </filter>
+
+    <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#000" flood-opacity="0.8"/>
     </filter>
   </defs>
 
   <!-- الخلفية -->
-  <rect width="1200" height="800" fill="url(#bgGrad)"/>
-  
-  <!-- خطوط ضوئية ذهبية بالخلفية -->
-  <path d="M 0 100 L 1200 300 M 0 400 L 1200 600 M 0 700 L 1200 900" stroke="#e6b325" stroke-width="2" opacity="0.1" />
-  <path d="M 200 0 L 400 800 M 800 0 L 1000 800" stroke="#e6b325" stroke-width="3" opacity="0.05" />
+  <rect width="100%" height="100%" fill="url(#bgGrad)"/>
+  <path d="M 600 0 L 1000 400 M 700 0 L 1000 300 M 800 0 L 1000 200" stroke="#FF1493" stroke-width="2" opacity="0.1"/>
+  <circle cx="500" cy="400" r="400" fill="#8A2BE2" opacity="0.1"/>
 
-  <!-- القسم الأيسر: النصوص والشعار -->
-  <g transform="translate(50, 80)">
-    <!-- شعار MY HD -->
-    <text x="0" y="80" font-family="Arial, sans-serif" font-weight="900" font-size="110" fill="url(#silverGrad)" letter-spacing="-2">MY</text>
-    <text x="220" y="80" font-family="Arial, sans-serif" font-weight="900" font-size="110" fill="url(#goldGrad)" letter-spacing="-2">HD</text>
-    
-    <!-- شريط IPTV -->
-    <rect x="180" y="110" width="280" height="50" rx="25" fill="url(#goldGrad)"/>
-    <text x="320" y="147" font-family="Arial, sans-serif" font-weight="bold" font-size="40" fill="#000" text-anchor="middle">IPTV</text>
-
-    <!-- النص العربي: مشاهدة بلا حدود -->
-    <text x="0" y="230" font-family="Tahoma, Arial, sans-serif" font-weight="bold" font-size="60" fill="#ffffff">مشاهدة بلا حدود</text>
-    
-    <!-- شريط النص العربي: كل القنوات.. كل الدول -->
-    <rect x="0" y="260" width="520" height="60" rx="30" fill="url(#goldGrad)"/>
-    <text x="260" y="302" font-family="Tahoma, Arial, sans-serif" font-weight="bold" font-size="32" fill="#000" text-anchor="middle">كل القنوات .. كل الدول</text>
-
-    <!-- أيقونات دائرية (4 أيقونات) -->
-    <!-- 1. رياضة -->
-    <g transform="translate(60, 360)">
-      <circle cx="0" cy="0" r="45" fill="none" stroke="url(#goldGrad)" stroke-width="4"/>
-      <rect x="-15" y="-10" width="30" height="20" rx="3" fill="url(#goldGrad)"/>
-      <path d="M -15 -10 L 15 -10 M -15 10 L 15 10" stroke="#000" stroke-width="2"/>
-      <text x="0" y="75" font-family="Tahoma" font-weight="bold" font-size="20" fill="#fff" text-anchor="middle">قنوات رياضية</text>
-    </g>
-    
-    <!-- 2. أفلام -->
-    <g transform="translate(180, 360)">
-      <circle cx="0" cy="0" r="45" fill="none" stroke="url(#goldGrad)" stroke-width="4"/>
-      <path d="M -20 -10 L 20 -10 L 20 15 L -20 15 Z" fill="url(#goldGrad)"/>
-      <path d="M -20 -10 L -10 -20 M 0 -10 L 10 -20 M 20 -10 L 30 -20" stroke="url(#goldGrad)" stroke-width="3"/>
-      <text x="0" y="75" font-family="Tahoma" font-weight="bold" font-size="20" fill="#fff" text-anchor="middle">أفلام ومسلسلات</text>
+  <!-- ================= الجزء العلوي الأيسر: الشعار والنصوص ================= -->
+  <g transform="translate(40, 50)">
+    <!-- الشعار -->
+    <g transform="translate(60, 40)">
+      <path d="M 0 -40 Q 25 -70 40 -40 Q 25 -10 0 -10 Z" fill="url(#purplePink)"/>
+      <path d="M 0 -40 Q -25 -70 -40 -40 Q -25 -10 0 -10 Z" fill="url(#bluePurple)"/>
+      <path d="M 35 -25 Q 65 -25 55 0 Q 35 10 20 -5 Z" fill="url(#purplePink)"/>
+      <path d="M -35 -25 Q -65 -25 -55 0 Q -35 10 -20 -5 Z" fill="url(#bluePurple)"/>
+      <path d="M 25 20 Q 50 50 20 65 Q 0 40 0 25 Z" fill="url(#pinkRed)"/>
+      <path d="M -25 20 Q -50 50 -20 65 Q 0 40 0 25 Z" fill="url(#purplePink)"/>
+      <path d="M -15 35 Q -15 65 15 55 Q 20 35 5 20 Z" fill="url(#pinkRed)"/>
     </g>
 
-    <!-- 3. أطفال -->
-    <g transform="translate(300, 360)">
-      <circle cx="0" cy="0" r="45" fill="none" stroke="url(#goldGrad)" stroke-width="4"/>
-      <circle cx="-10" cy="-5" r="12" fill="url(#goldGrad)"/>
-      <circle cx="15" cy="10" r="8" fill="url(#goldGrad)"/>
-      <text x="0" y="75" font-family="Tahoma" font-weight="bold" font-size="20" fill="#fff" text-anchor="middle">قنوات الأطفال</text>
+    <!-- نص MY HD -->
+    <text x="60" y="130" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="55" fill="url(#logoText)" text-anchor="middle" letter-spacing="1">MY HD</text>
+
+    <!-- النص العربي الرئيسي -->
+    <text x="0" y="200" font-family="Tahoma, Arial, sans-serif" font-weight="900" font-size="32" fill="#ffffff" text-anchor="start">متعة المشاهدة</text>
+    <text x="0" y="240" font-family="Tahoma, Arial, sans-serif" font-weight="900" font-size="32" fill="url(#pinkRed)" text-anchor="start">بجودة لا تضاهى</text>
+
+    <!-- المربعات الأربعة -->
+    <g transform="translate(0, 270)">
+      <rect x="0" y="0" width="280" height="50" rx="10" fill="#1a0a2e" stroke="#8A2BE2" stroke-width="1"/>
+      <rect x="15" y="12" width="25" height="20" rx="3" fill="none" stroke="url(#purplePink)" stroke-width="2"/>
+      <path d="M 20 8 L 35 8 M 22 35 L 33 35" stroke="url(#purplePink)" stroke-width="2"/>
+      <text x="55" y="20" font-family="Tahoma" font-weight="bold" font-size="14" fill="#fff">قنوات متنوعة</text>
+      <text x="55" y="38" font-family="Tahoma" font-size="10" fill="#aaa">محلية وعالمية</text>
     </g>
 
-    <!-- 4. عالمية -->
-    <g transform="translate(420, 360)">
-      <circle cx="0" cy="0" r="45" fill="none" stroke="url(#goldGrad)" stroke-width="4"/>
-      <circle cx="0" cy="0" r="25" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
-      <path d="M -25 0 L 25 0 M 0 -25 L 0 25 M -18 -18 L 18 18 M -18 18 L 18 -18" stroke="url(#goldGrad)" stroke-width="2"/>
-      <text x="0" y="75" font-family="Tahoma" font-weight="bold" font-size="20" fill="#fff" text-anchor="middle">قنوات عالمية</text>
+    <g transform="translate(0, 330)">
+      <rect x="0" y="0" width="280" height="50" rx="10" fill="#1a0a2e" stroke="#8A2BE2" stroke-width="1"/>
+      <rect x="15" y="12" width="25" height="20" rx="3" fill="none" stroke="url(#purplePink)" stroke-width="2"/>
+      <text x="20" y="28" font-family="Arial" font-size="10" font-weight="bold" fill="url(#purplePink)">HD</text>
+      <text x="55" y="20" font-family="Tahoma" font-weight="bold" font-size="14" fill="#fff">جودة عالية</text>
+      <text x="55" y="38" font-family="Tahoma" font-size="10" fill="#aaa">صوت وصورة فائقة</text>
     </g>
 
-    <!-- الميزات السفلية (3 كبسولات) -->
-    <!-- جودة عالية -->
-    <g transform="translate(30, 480)">
-      <rect x="0" y="0" width="160" height="50" rx="25" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
-      <path d="M 20 25 L 40 10 L 40 20 L 60 5 L 50 25 L 40 25 L 40 30 Z" fill="url(#goldGrad)"/>
-      <text x="85" y="32" font-family="Tahoma" font-weight="bold" font-size="18" fill="#fff" text-anchor="middle">جودة عالية</text>
-      <text x="85" y="46" font-family="Tahoma" font-size="12" fill="#ccc" text-anchor="middle">HD / FHD / 4K</text>
+    <g transform="translate(0, 390)">
+      <rect x="0" y="0" width="280" height="50" rx="10" fill="#1a0a2e" stroke="#8A2BE2" stroke-width="1"/>
+      <circle cx="27" cy="25" r="10" fill="none" stroke="url(#purplePink)" stroke-width="2"/>
+      <path d="M 24 21 L 31 25 L 24 29 Z" fill="url(#purplePink)"/>
+      <text x="55" y="20" font-family="Tahoma" font-weight="bold" font-size="14" fill="#fff">محتوى مميز</text>
+      <text x="55" y="38" font-family="Tahoma" font-size="10" fill="#aaa">أفلام، مسلسلات، برامج</text>
     </g>
 
-    <!-- استقرار -->
-    <g transform="translate(200, 480)">
-      <rect x="0" y="0" width="160" height="50" rx="25" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
-      <circle cx="30" cy="25" r="15" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
-      <path d="M 30 10 A 15 15 0 0 0 30 40 M 30 25 L 40 15" stroke="url(#goldGrad)" stroke-width="3" fill="none"/>
-      <text x="85" y="32" font-family="Tahoma" font-weight="bold" font-size="18" fill="#fff" text-anchor="middle">استقرار وسرعة</text>
-    </g>
-
-    <!-- دعم فني -->
-    <g transform="translate(370, 480)">
-      <rect x="0" y="0" width="160" height="50" rx="25" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
-      <path d="M 20 25 Q 20 15 30 15 Q 40 15 40 25" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
-      <path d="M 15 25 L 15 35 Q 15 40 20 40 L 25 40" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
-      <text x="85" y="32" font-family="Tahoma" font-weight="bold" font-size="18" fill="#fff" text-anchor="middle">دعم فني مستمر</text>
-    </g>
-
-    <!-- زر اشترك الآن -->
-    <g transform="translate(50, 580)">
-      <rect x="0" y="0" width="350" height="80" rx="40" fill="url(#goldGrad)" filter="url(#glow)"/>
-      <path d="M 30 40 L 50 20 L 70 40 M 30 40 L 50 60 L 70 40" stroke="#000" stroke-width="4" fill="none"/>
-      <text x="200" y="52" font-family="Tahoma" font-weight="bold" font-size="36" fill="#000" text-anchor="middle">اشترك الآن</text>
-      <path d="M 320 40 L 340 20 L 340 60 Z" fill="#000"/>
+    <g transform="translate(0, 450)">
+      <rect x="0" y="0" width="280" height="50" rx="10" fill="#1a0a2e" stroke="#8A2BE2" stroke-width="1"/>
+      <rect x="15" y="12" width="12" height="20" rx="2" fill="none" stroke="url(#purplePink)" stroke-width="1.5"/>
+      <rect x="22" y="20" width="10" height="12" rx="2" fill="none" stroke="url(#purplePink)" stroke-width="1.5"/>
+      <text x="55" y="20" font-family="Tahoma" font-weight="bold" font-size="14" fill="#fff">متوافق مع جميع الأجهزة</text>
+      <text x="55" y="38" font-family="Tahoma" font-size="10" fill="#aaa">Android - iOS - Smart TV</text>
     </g>
   </g>
 
-  <!-- القسم الأيمن: الشاشة والرسيفر -->
-  <g transform="translate(650, 100)">
-    <!-- الشاشة (تلفاز) -->
-    <rect x="0" y="0" width="500" height="300" rx="10" fill="#111" stroke="#333" stroke-width="8"/>
+  <!-- ================= الجزء العلوي الأيمن: التلفاز والرسيفر ================= -->
+  <g transform="translate(340, 50)" filter="url(#boxShadow)">
+    <!-- إطار التلفاز -->
+    <rect x="0" y="0" width="600" height="400" rx="10" fill="#111" stroke="#333" stroke-width="5"/>
     
-    <!-- محتوى الشاشة (محاكاة مباراة كرة قدم) -->
-    <rect x="8" y="8" width="484" height="284" fill="url(#screenGrad)"/>
-    <rect x="8" y="180" width="484" height="112" fill="#1a4a1a"/> <!-- العشب -->
-    <path d="M 8 180 Q 250 100 492 180" fill="none" stroke="#fff" stroke-width="2" opacity="0.5"/>
+    <!-- شاشة التلفاز -->
+    <rect x="5" y="5" width="590" height="390" fill="#0a0514"/>
     
-    <!-- لاعبين مبسطين -->
-    <circle cx="150" cy="140" r="15" fill="#fff"/>
-    <path d="M 135 155 L 120 200 L 150 210 L 165 180 L 180 210 L 195 200 L 170 155 Z" fill="#fff"/>
+    <!-- شريط القوائم -->
+    <rect x="5" y="5" width="590" height="40" fill="#111"/>
+    <text x="250" y="30" font-family="Tahoma" font-size="16" fill="#aaa">برامج   مسلسلات   أفلام   مباشر</text>
+    <circle cx="560" cy="25" r="8" fill="none" stroke="#fff" stroke-width="2"/>
     
-    <circle cx="350" cy="130" r="15" fill="#fff"/>
-    <path d="M 335 145 L 320 190 L 350 200 L 365 170 L 380 200 L 395 190 L 370 145 Z" fill="#fff"/>
+    <!-- محتوى الشاشة -->
+    <rect x="20" y="60" width="130" height="260" rx="10" fill="#2a0a4a" stroke="#555" stroke-width="2"/>
+    <text x="85" y="200" font-family="Tahoma" font-size="20" fill="#fff" text-anchor="middle">LIVE TV</text>
     
-    <!-- الكرة -->
-    <circle cx="250" cy="220" r="15" fill="#fff" stroke="#000" stroke-width="2"/>
-
-    <!-- شاشات صغيرة خلفية (أفلام وكرتون) -->
-    <g transform="translate(50, -80)">
-      <rect x="0" y="0" width="120" height="70" rx="5" fill="#2a1a2a" stroke="#555" stroke-width="3"/>
-      <rect x="130" y="0" width="120" height="70" rx="5" fill="#1a2a3a" stroke="#555" stroke-width="3"/>
-      <rect x="260" y="0" width="120" height="70" rx="5" fill="#3a2a1a" stroke="#555" stroke-width="3"/>
-      <rect x="390" y="0" width="120" height="70" rx="5" fill="#1a3a1a" stroke="#555" stroke-width="3"/>
-    </g>
+    <rect x="165" y="60" width="130" height="260" rx="10" fill="#3a0a2a" stroke="#555" stroke-width="2"/>
+    <text x="230" y="200" font-family="Tahoma" font-size="20" fill="#fff" text-anchor="middle">مسلسلات</text>
+    
+    <rect x="310" y="60" width="130" height="260" rx="10" fill="#1a0a3a" stroke="#555" stroke-width="2"/>
+    <text x="375" y="200" font-family="Tahoma" font-size="20" fill="#fff" text-anchor="middle">أفلام</text>
+    
+    <rect x="455" y="60" width="130" height="260" rx="10" fill="#0a1a3a" stroke="#555" stroke-width="2"/>
+    <text x="520" y="200" font-family="Tahoma" font-size="20" fill="#fff" text-anchor="middle">برامج</text>
 
     <!-- حامل التلفاز -->
-    <path d="M 200 308 L 180 340 L 320 340 L 300 308 Z" fill="#222"/>
+    <path d="M 220 400 L 200 440 L 400 440 L 380 400 Z" fill="#111"/>
 
     <!-- الرسيفر -->
-    <g transform="translate(50, 380)">
-      <rect x="0" y="0" width="300" height="90" rx="15" fill="#111" stroke="#333" stroke-width="4"/>
-      <rect x="10" y="10" width="280" height="70" rx="10" fill="#1a1a1a"/>
-      <!-- شعار MY HD على الرسيفر -->
-      <text x="150" y="50" font-family="Arial" font-weight="bold" font-size="24" fill="url(#goldGrad)" text-anchor="middle">▶ MY HD</text>
-    </g>
+    <rect x="60" y="460" width="350" height="80" rx="10" fill="#111" stroke="#333" stroke-width="2"/>
+    <text x="235" y="510" font-family="Arial" font-weight="bold" font-size="30" fill="url(#logoText)" text-anchor="middle">MY HD</text>
+    <circle cx="380" cy="520" r="5" fill="#00BFFF" filter="url(#glow)"/>
 
-    <!-- الريموت كنترول -->
-    <g transform="translate(380, 320)">
-      <rect x="0" y="0" width="60" height="200" rx="15" fill="#111" stroke="#333" stroke-width="3"/>
-      <circle cx="30" cy="30" r="10" fill="#d00"/>
-      <rect x="15" y="60" width="30" height="20" rx="5" fill="#333"/>
-      <circle cx="30" cy="110" r="20" fill="#333"/>
-      <text x="30" y="115" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle">OK</text>
-      <rect x="15" y="150" width="30" height="10" rx="3" fill="#333"/>
-      <rect x="15" y="170" width="30" height="10" rx="3" fill="#333"/>
-    </g>
+    <!-- الريموت -->
+    <rect x="460" y="430" width="50" height="150" rx="10" fill="#111" stroke="#333" stroke-width="2"/>
+    <circle cx="485" cy="455" r="8" fill="#FF0000"/>
+    <circle cx="485" cy="490" r="12" fill="#333"/>
   </g>
 
-  <!-- النص السفلي -->
-  <text x="600" y="760" font-family="Tahoma, Arial, sans-serif" font-weight="bold" font-size="32" fill="url(#goldGrad)" text-anchor="middle">مع MY HD .. الترفيه بلا حدود</text>
+  <!-- ================= الجزء السفلي: التواصل والاشتراك ================= -->
+  
+  <!-- مربع التواصل -->
+  <g transform="translate(50, 600)">
+    <rect x="0" y="0" width="400" height="90" rx="15" fill="#111" stroke="#333" stroke-width="2"/>
+    <circle cx="50" cy="45" r="30" fill="url(#purplePink)"/>
+    <path d="M 40 30 Q 50 25 55 35 L 50 40 Q 45 35 40 40 Z" fill="#fff"/>
+    <path d="M 45 50 Q 55 55 60 45 L 55 40 Q 50 45 45 40 Z" fill="#fff"/>
+    
+    <text x="100" y="35" font-family="Tahoma" font-size="16" fill="#aaa">تواصل معنا</text>
+    <text x="100" y="70" font-family="Arial" font-weight="bold" font-size="30" fill="#fff">+963991936353</text>
+  </g>
+
+  <!-- زر الاشتراك -->
+  <g transform="translate(500, 600)">
+    <rect x="0" y="0" width="450" height="90" rx="15" fill="url(#pinkRed)" filter="url(#glow)"/>
+    <text x="200" y="55" font-family="Tahoma" font-weight="bold" font-size="36" fill="#fff" text-anchor="middle">اشترك الآن</text>
+    <path d="M 380 35 L 400 45 L 380 55 Z" fill="#fff"/>
+  </g>
+
+  <!-- ================= الميزات الصغيرة (أسفل الصفحة) ================= -->
+  <g transform="translate(50, 720)">
+    <rect x="0" y="0" width="900" height="60" rx="10" fill="#111" stroke="#333" stroke-width="1"/>
+    
+    <g transform="translate(40, 10)">
+      <path d="M 15 5 L 30 0 L 45 5 L 45 25 Q 30 40 15 25 Z" fill="none" stroke="url(#purplePink)" stroke-width="2"/>
+      <text x="60" y="20" font-family="Tahoma" font-weight="bold" font-size="14" fill="#fff">خدمة موثوقة</text>
+      <text x="60" y="38" font-family="Tahoma" font-size="11" fill="#aaa">ودعم مستمر</text>
+    </g>
+    
+    <line x1="250" y1="10" x2="250" y2="50" stroke="#333" stroke-width="1"/>
+
+    <g transform="translate(290, 10)">
+      <path d="M 15 30 L 15 15 Q 15 5 30 5 Q 45 5 45 15 L 45 30" fill="none" stroke="url(#purplePink)" stroke-width="2"/>
+      <rect x="10" y="20" width="10" height="15" rx="3" fill="url(#purplePink)"/>
+      <rect x="40" y="20" width="10" height="15" rx="3" fill="url(#purplePink)"/>
+      <text x="60" y="20" font-family="Tahoma" font-weight="bold" font-size="14" fill="#fff">دعم فني</text>
+      <text x="60" y="38" font-family="Tahoma" font-size="11" fill="#aaa">على مدار الساعة</text>
+    </g>
+
+    <line x1="480" y1="10" x2="480" y2="50" stroke="#333" stroke-width="1"/>
+
+    <g transform="translate(520, 10)">
+      <path d="M 20 5 L 30 15 L 20 25 L 25 15 Z" fill="url(#purplePink)"/>
+      <path d="M 35 5 L 25 15 L 35 25 L 30 15 Z" fill="url(#purplePink)"/>
+      <text x="50" y="20" font-family="Tahoma" font-weight="bold" font-size="14" fill="#fff">تحديثات مستمرة</text>
+      <text x="50" y="38" font-family="Tahoma" font-size="11" fill="#aaa">وأداء مستقر</text>
+    </g>
+
+    <line x1="700" y1="10" x2="700" y2="50" stroke="#333" stroke-width="1"/>
+
+    <g transform="translate(740, 10)">
+      <circle cx="20" cy="20" r="10" fill="none" stroke="url(#purplePink)" stroke-width="2"/>
+      <circle cx="35" cy="20" r="10" fill="none" stroke="url(#purplePink)" stroke-width="2"/>
+      <circle cx="27" cy="10" r="8" fill="none" stroke="url(#purplePink)" stroke-width="2"/>
+      <text x="55" y="20" font-family="Tahoma" font-weight="bold" font-size="14" fill="#fff">آلاف</text>
+      <text x="55" y="38" font-family="Tahoma" font-size="11" fill="#aaa">المشتركين</text>
+    </g>
+  </g>
 </svg>

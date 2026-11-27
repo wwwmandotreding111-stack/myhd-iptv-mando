@@ -219,3 +219,13 @@ footer{border-color:#dce7f4;color:#73839a;background:#fff}footer b{color:#0875d1
  #plansGrid .plan-content .quantity-picker{grid-template-columns:minmax(70px,1fr) 72px minmax(112px,1.25fr);gap:8px}
  #plansGrid .plan-content .add-to-cart-btn{font-size:12px;padding-inline:7px}
 }
+
+
+/* Wholesale inquiry CTA */
+.hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:8px}
+.hero-actions .btn{min-height:48px}
+.btn-wholesale{border:1.5px solid #0875d1;background:#fff;color:#0759b8;box-shadow:0 7px 20px #0759b815}
+.btn-wholesale:hover{background:#edf7ff;border-color:#0055a8;transform:translateY(-1px)}
+.btn-wholesale span{font-size:18px;line-height:1}
+.wholesale-note{display:block;margin-top:10px;color:#526985;font-size:12px}
+@media(max-width:760px){.hero-actions{display:grid;grid-template-columns:1fr;gap:10px}.hero-actions .btn{width:100%}.wholesale-note{text-align:center}}

@@ -105,3 +105,46 @@
 .confirm-order-btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
 .confirmed-pill{display:inline-flex;align-items:center;gap:4px;border:1px solid #438b5c;background:#153823;color:#a7e8b9;border-radius:8px;padding:7px 10px;font:700 11px Cairo;white-space:nowrap}
 @media(max-width:620px){.order-tools{flex-wrap:wrap}.confirm-order-btn,.confirmed-pill{flex:1;text-align:center;justify-content:center}}
+
+/* MYHD storefront refresh: midnight graphite, calm champagne and clean ivory */
+:root{--bg:#0b1018;--panel:#121a25;--panel2:#182333;--gold:#c7a66a;--gold2:#ead8b5;--text:#f4f6f8;--muted:#a5afbc;--line:#2a3747;--red:#e07878}
+body{background:radial-gradient(ellipse at 50% -15%,#1b2a3c 0,transparent 48%),var(--bg)}
+.topbar,.admin-top{background:#0d141e;border-color:#263344}
+.brand-mark{border-color:#c7a66a;color:#ead8b5;box-shadow:0 0 20px #c7a66a18}
+.btn-gold{background:linear-gradient(135deg,#ead8b5,#bd985b);color:#171b22;box-shadow:0 8px 24px #c7a66a1c}
+.btn-outline{border-color:#65758a;color:#e3d1ad}
+.hero{background:radial-gradient(ellipse at 72% 45%,#30435a55,transparent 46%),linear-gradient(110deg,#0b1018,#111b28)}
+.plan-card{background:linear-gradient(155deg,#192536,#111a26);border-color:#334255;box-shadow:0 12px 30px #0002}
+.plan-card:hover{border-color:#b89a67;transform:translateY(-3px);transition:.2s}
+.plan-placeholder{background:radial-gradient(circle,#35465b,#111a26);color:#ead8b5}
+.section-head p,.plan-content p{color:#a5afbc}
+.price strong,.duration,.offer-description{color:#ead8b5}
+.quantity-picker{background:#101a27;border-color:#35465b}
+.quantity-input{background:#172536;border-color:#65758a;color:#f0dfbd}
+.add-to-cart-btn{border:1px solid #b99b68;background:linear-gradient(135deg,#e4d0a9,#b89559);color:#171b22}
+.floating-cart{border-color:#64758a;background:linear-gradient(110deg,#1c2a3b,#111a26);box-shadow:0 12px 45px #000b,0 0 22px #b99b6818}
+.auth-page{background:radial-gradient(circle at 50% 8%,#263b5266,transparent 38%),#0b1018}
+.auth-card,.selected-plan-card,.coupon-box{background:#131d2a;border-color:#35465a;box-shadow:0 18px 50px #0004}
+input,textarea{background:#0d1622;border-color:#344458}
+input:focus,textarea:focus{border-color:#c7a66a;box-shadow:0 0 0 3px #c7a66a18}
+.cart-heading-actions{display:flex;align-items:center;gap:14px}
+.cart-heading-actions .back-link{margin:0}
+.cart-clear-btn{border:1px solid #815454;background:#2a1b22;color:#f0b5b5;border-radius:8px;padding:6px 10px;font:700 11px Cairo;cursor:pointer}
+.cart-line{border-color:#344458;align-items:center}
+.cart-product{min-width:0}
+.cart-product small{line-height:1.9}
+.cart-product small strong{color:#ead8b5}
+.cart-quantity{display:flex;align-items:center;gap:7px;margin-top:9px}
+.cart-quantity button{min-width:30px;height:29px;border:1px solid #596d83;border-radius:7px;background:#1a2a3d;color:#f0dfbd;font:800 15px Cairo;cursor:pointer}
+.cart-quantity .cart-remove{min-width:auto;padding:0 10px;border-color:#815454;background:#2a1b22;color:#f0b5b5;font-size:11px}
+.cart-quantity b{min-width:20px;text-align:center;color:#f4f6f8}
+.cart-warning{padding:9px 12px;border:1px solid #8b754e;border-radius:8px;color:#ead8b5;background:#292416;font-size:11px}
+.cart-empty{display:grid;justify-items:center;gap:10px;padding:28px 12px;text-align:center}
+.cart-empty>span{font-size:35px}
+.cart-empty b{font-size:16px;color:#f4f6f8}
+.cart-empty small{color:#a5afbc;line-height:1.8}
+.cart-empty .btn{margin-top:7px}
+.success-card{border-color:#476b5a}
+.success-icon{background:#18352a;border-color:#4e9a74;color:#a9e8c2}
+.support{border-color:#3b5066;background:linear-gradient(110deg,#192638,#111a26)}
+@media(max-width:620px){.cart-line{align-items:flex-start;flex-direction:column}.line-subtotal{align-self:flex-end}.cart-heading-actions{gap:8px}.cart-heading-actions .back-link{font-size:11px}}

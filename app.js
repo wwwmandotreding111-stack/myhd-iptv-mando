@@ -15,18 +15,26 @@
  }
  updateCart();
  if(!cfg.SUPABASE_URL||!cfg.SUPABASE_PUBLISHABLE_KEY){grid.innerHTML='<div class="empty-state">تعذر الاتصال بقاعدة البيانات.</div>';return;}
+ if(!window.supabase || !window.supabase.createClient){grid.innerHTML='<div class="empty-state">تعذر تحميل مكتبة الاتصال. حدّث الصفحة أو أعد المحاولة.</div><button class="retry-plans" type="button">إعادة المحاولة</button>';grid.querySelector(".retry-plans")?.addEventListener("click",()=>location.reload());return;}
  const db=window.supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_PUBLISHABLE_KEY);
+ const withTimeout=(promise,ms)=>Promise.race([promise,new Promise((_,reject)=>setTimeout(()=>reject(new Error("timeout")),ms))]);
+ const showLoadError=message=>{grid.innerHTML='<div class="empty-state">'+message+'</div><button class="retry-plans" type="button">إعادة تحميل الباقات</button>';grid.querySelector(".retry-plans")?.addEventListener("click",()=>{grid.innerHTML='<div class="loading">جارٍ إعادة تحميل الباقات...</div>';load().catch(()=>showLoadError("تعذر الاتصال حالياً. تحقق من الإنترنت ثم أعد المحاولة."));});};
  const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
  const duration=p=>p.duration_hours?(`${p.duration_hours} ساعة`):(p.duration_months?(`${p.duration_months} شهر`):"");
 
  function validWindow(x){return (!x.starts_at||new Date(x.starts_at).getTime()<=Date.now())&&(!x.ends_at||new Date(x.ends_at).getTime()>=Date.now());}
  function renderAdSlot(items,id){const el=document.getElementById(id);if(!el)return;el.innerHTML=items.map(a=>{const url=a.link_url&&/^https?:\/\//i.test(a.link_url)?a.link_url:"#plans";return '<a class="store-ad" href="'+esc(url)+'" '+(url!=="#plans"?'target="_blank" rel="noopener"':'')+'><img src="'+esc(a.image_path)+'" alt="'+esc(a.title||"إعلان MYHD")+'"><span><b>'+esc(a.title||"عرض خاص")+'</b><small>'+esc(a.description||"اكتشف العرض الآن")+'</small></span></a>';}).join("");el.hidden=!items.length;const wrap=id==="homeAdsList"?document.getElementById("homeAds"):null;if(wrap)wrap.hidden=!items.length;}
  async function load(){
-  const {data,error}=await db.from("subscriptions").select("id,name,category,duration_months,duration_hours,price,currency,image_path,description,features").eq("is_active",true).order("sort_order").order("created_at");
-  if(error){grid.innerHTML='<div class="empty-state">تعذر تحميل الباقات. يرجى المحاولة لاحقاً.</div>';return;}
+  let result;
+  try{result=await withTimeout(db.from("subscriptions").select("id,name,category,duration_months,duration_hours,price,currency,image_path,description,features").eq("is_active",true).order("sort_order").order("created_at"),15000);}
+  catch(e){showLoadError("تعذر الاتصال بقاعدة البيانات أو انتهت مهلة التحميل. تحقق من الإنترنت ثم أعد المحاولة.");return;}
+  const {data,error}=result;
+  if(error){console.error("MYHD subscriptions load error:",error);showLoadError("تعذر تحميل الباقات من قاعدة البيانات. يرجى إعادة المحاولة.");return;}
   if(!data?.length){grid.innerHTML='<div class="empty-state">لا توجد باقات منشورة حالياً.</div>';return;}
 
-  const [offerResult,bannerResult]=await Promise.all([db.from("offers").select("*").eq("is_active",true),db.from("banners").select("*").eq("is_active",true)]);
+  let offerResult={data:[]},bannerResult={data:[]};
+  try{[offerResult,bannerResult]=await withTimeout(Promise.all([db.from("offers").select("*").eq("is_active",true),db.from("banners").select("*").eq("is_active",true)]),8000);}
+  catch(e){console.warn("MYHD optional offers/banners unavailable; rendering packages without them.",e);}
   const offerByPlan=new Map((offerResult.data||[]).filter(o=>o.subscription_id&&validWindow(o)).map(o=>[o.subscription_id,o]));
   const banners=(bannerResult.data||[]).filter(validWindow);
   renderAdSlot(banners.filter(a=>(a.placement||"home")==="home"),"homeAdsList");
@@ -54,5 +62,5 @@
   updateCart();
  }
 
- load();
+ load().catch(e=>{console.error("MYHD unexpected load error:",e);showLoadError("حدث خطأ غير متوقع أثناء تحميل الباقات. أعد المحاولة.");});
 })();

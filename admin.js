@@ -17,6 +17,7 @@
  $("planForm").onsubmit=async e=>{
   e.preventDefault();const id=$("planId").value;
   const payload={name:$("planName").value.trim(),category:$("planCategory").value.trim()||"MY HD",price:Number($("planPrice").value),currency:$("planCurrency").value.trim().toUpperCase(),duration_months:$("planMonths").value?Number($("planMonths").value):null,duration_hours:$("planHours").value?Number($("planHours").value):null,image_path:$("planImage").value.trim()||null,description:$("planDescription").value.trim()||null,is_active:$("planActive").checked};
+  if(!id)payload.code=`MYHD-${Date.now()}`;
   const result=id?await db.from("subscriptions").update(payload).eq("id",id):await db.from("subscriptions").insert(payload);
   if(result.error){$("dashboardMessage").textContent=result.error.message;return;}
   $("dashboardMessage").textContent="تم حفظ الباقة."; $("planForm").hidden=true;await loadDashboard();

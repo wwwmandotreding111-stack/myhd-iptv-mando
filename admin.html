@@ -106,10 +106,10 @@
       </section>
       <section class="admin-tab" id="tab-ads">
         <div class="section-toolbar"><div><span class="eyebrow">التسويق والإعلانات</span><h2>الإعلانات والصور</h2></div><button class="btn btn-gold" id="newAdBtn">＋ إضافة إعلان</button></div>
-        <form id="adForm" class="panel admin-form" hidden><h3>إضافة إعلان جديد</h3>
+        <form id="adForm" class="panel admin-form" hidden><input type="hidden" id="adId"><h3 id="adFormTitle">إضافة إعلان جديد</h3>
           <div class="form-grid"><div><label>عنوان الإعلان</label><input id="adTitle" required></div>
           <div><label>مكان الظهور</label><select id="adPlacement"><option value="home">أعلى الصفحة الرئيسية</option><option value="plans">قبل الباقات</option><option value="footer">أسفل المتجر</option></select></div>
-          <div class="wide"><label>صورة الإعلان (JPG / PNG / WEBP حتى 5MB)</label><input id="adImage" type="file" accept="image/jpeg,image/png,image/webp" required><div id="adPreview" class="ad-preview">معاينة الصورة ستظهر هنا</div></div>
+          <div class="wide"><label>صورة الإعلان (JPG / PNG / WEBP حتى 5MB)</label><input id="adImage" type="file" accept="image/jpeg,image/png,image/webp"><div id="adPreview" class="ad-preview">معاينة الصورة ستظهر هنا</div></div>
           <div class="wide"><label>رابط عند الضغط (اختياري)</label><input id="adLink" type="url" placeholder="https://..."></div>
           <div class="wide"><label>وصف قصير (اختياري)</label><textarea id="adDescription" rows="2"></textarea></div>
           <div><label>تاريخ انتهاء الإعلان (اختياري)</label><input id="adEnd" type="datetime-local"></div>

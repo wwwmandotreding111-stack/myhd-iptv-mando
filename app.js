@@ -54,12 +54,12 @@
   const offerByPlan=new Map((offerResult.data||[]).filter(o=>o.subscription_id&&validWindow(o)).map(o=>[o.subscription_id,o]));
   const banners=(bannerResult.data||[]).filter(validWindow);
   const heroAd=banners.find(a=>(a.placement||"home")==="home");
-  const heroArt=document.querySelector(".hero-art");
-  if(heroArt&&heroAd){
-   const adUrl=heroAd.link_url&&/^https?:\\/\\//i.test(heroAd.link_url)?heroAd.link_url:"#plans";
-   heroArt.innerHTML='<a class="hero-ad-card" href="'+esc(adUrl)+'" '+(adUrl!=="#plans"?'target="_blank" rel="noopener"':'')+'><img src="'+esc(heroAd.image_path)+'" alt="'+esc(heroAd.title||"إعلان MYHD")+'"><span class="hero-ad-caption"><b>'+esc(heroAd.title||"إعلان MYHD")+'</b>'+(heroAd.description?'<small>'+esc(heroAd.description)+'</small>':'')+'</span></a>';
-   heroArt.classList.add("has-hero-ad");
-  }else if(heroArt){heroArt.classList.remove("has-hero-ad");}
+  const heroScreen=document.querySelector(".hero-art .screen");
+  if(heroScreen&&heroAd){
+   const adUrl=heroAd.link_url&&/^https?:\/\//i.test(heroAd.link_url)?heroAd.link_url:"#plans";
+   heroScreen.innerHTML='<a class="hero-ad-card" href="'+esc(adUrl)+'" '+(adUrl!=="#plans"?'target="_blank" rel="noopener"':'')+'><img src="'+esc(heroAd.image_path)+'" alt="'+esc(heroAd.title||"إعلان MYHD")+'"><span class="hero-ad-caption"><b>'+esc(heroAd.title||"إعلان MYHD")+'</b>'+(heroAd.description?'<small>'+esc(heroAd.description)+'</small>':'')+'</span></a>';
+   heroScreen.classList.add("has-hero-ad");
+  }else if(heroScreen){heroScreen.classList.remove("has-hero-ad");}
   const homeAdsWrap=document.getElementById("homeAds");if(homeAdsWrap)homeAdsWrap.hidden=true;
   const planAds=banners.filter(a=>a.placement==="plans"),planAdEl=document.getElementById("planAds");
   if(planAdEl){planAdEl.innerHTML=planAds.map(a=>'<a class="store-ad" href="'+esc(a.link_url&&/^https?:\/\//i.test(a.link_url)?a.link_url:"#plans")+'"><img src="'+esc(a.image_path)+'" alt="'+esc(a.title||"إعلان")+'"><span><b>'+esc(a.title||"إعلان")+'</b><small>'+esc(a.description||"")+'</small></span></a>').join("");planAdEl.hidden=!planAds.length;}

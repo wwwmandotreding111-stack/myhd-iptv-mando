@@ -58,7 +58,7 @@
   if(window.__myhdHeroAdTimer){clearInterval(window.__myhdHeroAdTimer);window.__myhdHeroAdTimer=null;}
   if(heroScreen&&heroAds.length){
    let heroIndex=0;
-   const showHeroAd=()=>{const ad=heroAds[heroIndex];const adUrl=ad.link_url&&/^https?:\\/\\//i.test(ad.link_url)?ad.link_url:"#plans";
+   const showHeroAd=()=>{const ad=heroAds[heroIndex];const adUrl=ad.link_url&&/^https?:\/\//i.test(ad.link_url)?ad.link_url:"#plans";
     heroScreen.innerHTML='<a class="hero-ad-card" href="'+esc(adUrl)+'" '+(adUrl!=="#plans"?'target="_blank" rel="noopener"':'')+'><img src="'+esc(ad.image_path)+'" alt="'+esc(ad.title||"إعلان MYHD")+'"><span class="hero-ad-caption"><b>'+esc(ad.title||"إعلان MYHD")+'</b>'+(ad.description?'<small>'+esc(ad.description)+'</small>':'')+'</span></a>';
     heroScreen.classList.add("has-hero-ad");heroScreen.closest(".hero-art")?.classList.add("has-hero-ad");
    };

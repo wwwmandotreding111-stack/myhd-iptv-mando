@@ -53,12 +53,16 @@
   catch(e){console.warn("MYHD optional offers/banners unavailable; rendering packages without them.",e);}
   const offerByPlan=new Map((offerResult.data||[]).filter(o=>o.subscription_id&&validWindow(o)).map(o=>[o.subscription_id,o]));
   const banners=(bannerResult.data||[]).filter(validWindow);
-  const heroAd=banners.find(a=>(a.placement||"home")==="home");
+  const heroAds=banners.filter(a=>(a.placement||"home")==="home");
   const heroScreen=document.querySelector(".hero-art .screen");
-  if(heroScreen&&heroAd){
-   const adUrl=heroAd.link_url&&/^https?:\/\//i.test(heroAd.link_url)?heroAd.link_url:"#plans";
-   heroScreen.innerHTML='<a class="hero-ad-card" href="'+esc(adUrl)+'" '+(adUrl!=="#plans"?'target="_blank" rel="noopener"':'')+'><img src="'+esc(heroAd.image_path)+'" alt="'+esc(heroAd.title||"إعلان MYHD")+'"><span class="hero-ad-caption"><b>'+esc(heroAd.title||"إعلان MYHD")+'</b>'+(heroAd.description?'<small>'+esc(heroAd.description)+'</small>':'')+'</span></a>';
-   heroScreen.classList.add("has-hero-ad");heroScreen.closest(".hero-art")?.classList.add("has-hero-ad");
+  if(window.__myhdHeroAdTimer){clearInterval(window.__myhdHeroAdTimer);window.__myhdHeroAdTimer=null;}
+  if(heroScreen&&heroAds.length){
+   let heroIndex=0;
+   const showHeroAd=()=>{const ad=heroAds[heroIndex];const adUrl=ad.link_url&&/^https?:\\/\\//i.test(ad.link_url)?ad.link_url:"#plans";
+    heroScreen.innerHTML='<a class="hero-ad-card" href="'+esc(adUrl)+'" '+(adUrl!=="#plans"?'target="_blank" rel="noopener"':'')+'><img src="'+esc(ad.image_path)+'" alt="'+esc(ad.title||"إعلان MYHD")+'"><span class="hero-ad-caption"><b>'+esc(ad.title||"إعلان MYHD")+'</b>'+(ad.description?'<small>'+esc(ad.description)+'</small>':'')+'</span></a>';
+    heroScreen.classList.add("has-hero-ad");heroScreen.closest(".hero-art")?.classList.add("has-hero-ad");
+   };
+   showHeroAd();if(heroAds.length>1)window.__myhdHeroAdTimer=setInterval(()=>{heroIndex=(heroIndex+1)%heroAds.length;showHeroAd();},3000);
   }else if(heroScreen){heroScreen.classList.remove("has-hero-ad");heroScreen.closest(".hero-art")?.classList.remove("has-hero-ad");}
   const homeAdsWrap=document.getElementById("homeAds");if(homeAdsWrap)homeAdsWrap.hidden=true;
   const planAds=banners.filter(a=>a.placement==="plans"),planAdEl=document.getElementById("planAds");
